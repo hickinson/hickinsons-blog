@@ -209,3 +209,10 @@ details > p {
 .mdx-content blockquote {
     @apply my-8;
 }
+
+return (
+  <span>
+    I'm a <strong style={{ color: "#1915fd" }}>{words[index]}</strong>
+    <span className="cursor">_</span>
+  </span>
+);
