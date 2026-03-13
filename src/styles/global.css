@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4 {
+    @apply font-semibold font-serif tracking-tight;
+}
+
+h1 {
+    @apply text-4xl leading-tight text-gray-900 mb-6 mt-2;
+}
+
+h2 {
+    @apply text-2xl leading-snug text-gray-900 mb-3 mt-10;
+}
+
+h3 {
+    @apply text-xl leading-snug text-gray-800 mb-3 mt-8;
+}
+
+h4 {
+    @apply text-lg leading-snug text-gray-700 mb-2 mt-6;
+}
+
+p {
+    @apply text-base leading-8 text-gray-700 mb-6;
+}
+
+ol {
+    @apply list-decimal list-outside pl-6 mb-6;
+}
+
+ul {
+    @apply list-disc list-outside pl-6 mb-6;
+}
+
+li {
+    @apply text-base leading-8 text-gray-700 mb-2;
+}
+
+a {
+    @apply text-blue-600 no-underline hover:underline;
+}
+
+a:focus {
+    @apply outline-none ring-2 ring-blue-200;
+}
+
+blockquote {
+    @apply pl-4 pr-2 py-1 ml-0 mb-6 italic border-l-4 bg-gray-50 text-gray-700;
+}
+
+blockquote p {
+    @apply mb-0;
+}
+
+code {
+    @apply bg-gray-100 text-gray-800 border border-gray-200 px-1.5 py-0.5 rounded text-sm;
+}
+
+table {
+    @apply w-full border-collapse bg-white text-sm mb-4;
+}
+
+th {
+    @apply text-left font-semibold text-gray-700;
+}
+
+td {
+    @apply text-gray-700;
+}
+
+thead th {
+    @apply border-b border-gray-300;
+}
+
+tbody tr:not(:last-child) {
+    @apply border-b border-gray-300;
+}
+
+input[type='number'] {
+    @apply w-16 text-center text-xs border border-gray-300 rounded p-1;
+}
+
+input[type='text'] {
+    @apply w-16 text-center text-xs border border-gray-300 rounded p-1;
+}
+
+select {
+    @apply border border-gray-300 text-xs  rounded p-1 bg-white;
+}
+
+.observablehq {
+    @apply mb-4;
+}
+
+.observablehq code {
+    @apply text-sm;
+}
+
+#vg-tooltip-element.vg-tooltip {
+    @apply bg-white text-xs shadow-md rounded p-1 mb-0;
+    max-width: 450px;
+}
+
+#vg-tooltip-element.vg-tooltip table {
+    @apply mb-0 text-xs;
+}
+
+#vg-tooltip-element.vg-tooltip tbody,
+#vg-tooltip-element.vg-tooltip tr {
+    @apply m-0 p-0 text-xs;
+}
+
+#vg-tooltip-element.vg-tooltip td.key {
+    @apply px-0.5 py-0.5 text-right  m-0 text-xs;
+}
+
+#vg-tooltip-element.vg-tooltip td.value {
+    @apply px-0.5 py-0.5 text-left m-0 text-xs;
+}
+
+input[type='submit'],
+input[type='reset'],
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='search'],
+input[type='number'],
+input[type='file'] {
+    @apply text-xs text-gray-700 p-1 rounded text-left border border-gray-300 mr-2 mt-2 min-w-[70px];
+}
+
+input[type='button'] {
+    @apply text-xs bg-gray-200 text-gray-700 p-1 rounded border border-gray-300 mr-2 mt-2;
+}
+
+textarea {
+    @apply text-sm text-gray-700 p-1 rounded text-left border border-gray-300 mr-2 mt-2;
+}
+
+input[type='text'] {
+    width: auto;
+}
+
+svg {
+    @apply inline;
+}
+
+.vega-embed-wrapper {
+    overflow: visible !important;
+}
+
+.definition-tooltip-content p,
+.definition-tooltip-content ul,
+.definition-tooltip-content li,
+.definition-tooltip-content code {
+    font-size: 0.8rem;
+}
+
+details {
+    @apply p-2 mb-4 text-gray-700;
+}
+
+summary {
+    @apply text-base font-semibold cursor-pointer mb-2 text-gray-700;
+}
+
+summary::-webkit-details-marker {
+    @apply hidden;
+}
+
+details[open] summary {
+    @apply mb-4;
+}
+
+details > p {
+    @apply text-base text-gray-700 leading-relaxed;
+}
+
+.mdx-content {
+    @apply text-gray-800;
+}
+
+.mdx-content p {
+    @apply mb-6;
+}
+
+.mdx-content h1 {
+    @apply mt-4 mb-6;
+}
+
+.mdx-content h2 {
+    @apply mt-12 mb-4;
+}
+
+.mdx-content h3 {
+    @apply mt-10 mb-3;
+}
+
+.mdx-content ul,
+.mdx-content ol {
+    @apply mb-6;
+}
+
+.mdx-content blockquote {
+    @apply my-8;
+}

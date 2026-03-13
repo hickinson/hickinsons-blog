@@ -1,0 +1,40 @@
+---
+title: About
+description: About
+post_date: 2023-09-11
+post_category: non_blog_post
+---
+
+export { Layout as default } from '../components/Layout';
+import { SEO } from "../components/SEO"
+export const Head = (props) => (
+  <SEO frontmatter={props?.pageContext?.frontmatter || {}} />
+);
+import HeadShot from '../components/HeadShot';
+import RotatingText from 'react-rotating-text';
+
+<HeadShot />
+
+Hi, I'm Phil. I'm a <RotatingText  style={{ color: '#1915fd', backgroundColor: 'yellow' }} items={['dad','builder','problem solver','leader','writer','developer','thinker']}  />.
+
+I’m interested in building things that last and thinking clearly in a noisy world.
+
+By day I work across data, digital platforms and organisational change in the public sector. Much of that work involves making sense of complex systems, modernising, and helping people to use data and technology in ways that support better decisions and services.
+
+But this site isn’t just about work.
+
+It’s a place to explore ideas around leadership, personal responsibility, and the craft of building things well. Some posts will be about data, platforms and transformation. Others will drift into projects, life, entrepreneurship, belief, discipline, and the long game of creating something meaningful.
+
+I’m less interested in hype and more interested in things that endure: clear thinking, strong teams, useful systems, and a life built with intention.
+
+If that resonates, you’ll probably feel at home here.
+
+## Elsewhere
+
+- X/Twitter: [@hickinsons](https://twitter.com/hickinsons)
+- LinkedIn: [Phil Hickinson](https://www.linkedin.com/in/hickinsons)
+- Email: phil@hickinsons.blog
+- Github: [hickinson](https://github.com/hickinson)
+
+
+
