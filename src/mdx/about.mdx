@@ -11,11 +11,11 @@ export const Head = (props) => (
   <SEO frontmatter={props?.pageContext?.frontmatter || {}} />
 );
 import HeadShot from '../components/HeadShot';
-import RotatingText from 'react-rotating-text';
+import RotatingIdentity from '../components/RotatingIdentity';
 
 <HeadShot />
 
-Hi, I'm Phil. I'm a <RotatingText  style={{ color: '#1915fd', backgroundColor: 'yellow' }} items={['dad','builder','problem solver','leader','writer','developer','thinker']}  />.
+Hi, I'm Phil. <RotatingIdentity />
 
 I’m interested in building things that last and thinking clearly in a noisy world.
 
