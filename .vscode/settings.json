@@ -1,4 +1,5 @@
 {
     "terminal.integrated.accessibleViewFocusOnCommandExecution": true,
-    "terminal.integrated.defaultProfile.windows": null
+    "terminal.integrated.defaultProfile.windows": null,
+    "terminal.integrated.windowsUseConptyDll": true
 }
