@@ -20,18 +20,16 @@ const ResponsiveLink = ({ text, IconComponent, route }) => {
     if (windowWidth === null) return null;
 
     return (
-        <div>
-            <Link
-                to={route}
-                className="text-gray-600 hover:text-blue-700 transition ease-in duration-200"
-            >
-                {windowWidth > 500 ? (
-                    text
-                ) : (
-                    <IconComponent className="w-4.5 h-4.5" />
-                )}
-            </Link>
-        </div>
+        <Link
+            to={route}
+            className="text-sm font-medium text-site-muted no-underline transition-colors duration-200 hover:text-site-text"
+        >
+            {windowWidth > 500 ? (
+                text
+            ) : (
+                <IconComponent className="h-[1rem] w-[1rem]" />
+            )}
+        </Link>
     );
 };
 

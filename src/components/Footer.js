@@ -1,21 +1,27 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 const Footer = () => {
     return (
-        <div className="text-center">
-            <hr className="border-gray-300" />
-            <footer className="mt-4">
-                <p className="text-sm text-gray-500">
-                    <a href="/">Back home</a>
-                </p>
-                <p className="text-sm text-gray-500">
+        <footer className="border-t border-site-border py-8">
+            <div className="flex flex-col items-center gap-3 text-center">
+                <Link
+                    to="/"
+                    className="text-sm font-medium text-site-muted no-underline hover:text-site-text"
+                >
+                    Back home
+                </Link>
+
+                <p className="max-w-2xl text-sm leading-7 text-site-muted mb-0">
                     This site is built with{' '}
                     <a href="https://gatsbyjs.org">Gatsby</a> and{' '}
                     <a href="https://mdxjs.com">MDX</a>. Source code{' '}
-                    <a href="https://github.com/hickinson/hickinsons-blog">here</a>.
+                    <a href="https://github.com/hickinson/hickinsons-blog">
+                        here
+                    </a>.
                 </p>
-            </footer>
-        </div>
+            </div>
+        </footer>
     );
 };
 

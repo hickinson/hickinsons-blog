@@ -2,31 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --bg: #faf8f3;
+    --surface: #f3efe7;
+    --text: #1d1d1b;
+    --text-muted: #5f5a52;
+    --border: #d9d2c7;
+    --accent: #2f5d50;
+    --accent-hover: #254a40;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply bg-site-bg text-site-text font-sans antialiased;
+    font-feature-settings: "liga", "kern", "calt";
+}
+
+::selection {
+    background: rgba(47, 93, 80, 0.16);
+}
+
 h1,
 h2,
 h3,
 h4 {
-    @apply font-semibold font-serif tracking-tight;
+    @apply font-serif font-semibold tracking-tighterish text-site-text;
+    text-wrap: balance;
 }
 
 h1 {
-    @apply text-4xl leading-tight text-gray-900 mb-6 mt-2;
+    @apply text-4xl md:text-5xl leading-[1.05] mb-6 mt-2;
 }
 
 h2 {
-    @apply text-2xl leading-snug text-gray-900 mb-3 mt-10;
+    @apply text-3xl leading-[1.12] mb-4 mt-14;
 }
 
 h3 {
-    @apply text-xl leading-snug text-gray-800 mb-3 mt-8;
+    @apply text-xl md:text-2xl leading-[1.2] mb-3 mt-10;
 }
 
 h4 {
-    @apply text-lg leading-snug text-gray-700 mb-2 mt-6;
+    @apply text-lg leading-[1.3] mb-2 mt-8;
 }
 
 p {
-    @apply text-base leading-8 text-gray-700 mb-6;
+    @apply text-[1.05rem] leading-[1.9] text-site-muted mb-6;
 }
 
 ol {
@@ -38,59 +62,81 @@ ul {
 }
 
 li {
-    @apply text-base leading-8 text-gray-700 mb-2;
+    @apply text-[1.05rem] leading-[1.85] text-site-muted mb-2;
 }
 
 a {
-    @apply text-blue-600 no-underline hover:underline;
+    color: var(--accent);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+    transition:
+        color 180ms ease,
+        text-decoration-color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease;
 }
 
-a:focus {
-    @apply outline-none ring-2 ring-blue-200;
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(47, 93, 80, 0.18);
+    border-radius: 0.25rem;
 }
 
 blockquote {
-    @apply pl-4 pr-2 py-1 ml-0 mb-6 italic border-l-4 bg-gray-50 text-gray-700;
+    @apply pl-5 pr-2 py-1 ml-0 mb-8 border-l-2 bg-site-surface text-site-muted;
 }
 
 blockquote p {
-    @apply mb-0;
+    @apply mb-0 text-[1.08rem] leading-[1.85] italic;
+}
+
+hr {
+    @apply border-site-border;
 }
 
 code {
-    @apply bg-gray-100 text-gray-800 border border-gray-200 px-1.5 py-0.5 rounded text-sm;
+    @apply bg-site-surface text-site-text border border-site-border px-1.5 py-0.5 rounded-md text-sm;
+}
+
+pre code {
+    @apply border-0 bg-transparent p-0 rounded-none;
 }
 
 table {
-    @apply w-full border-collapse bg-white text-sm mb-4;
+    @apply w-full border-collapse bg-white text-sm mb-6;
 }
 
 th {
-    @apply text-left font-semibold text-gray-700;
+    @apply text-left font-semibold text-site-text;
 }
 
 td {
-    @apply text-gray-700;
+    @apply text-site-muted;
 }
 
 thead th {
-    @apply border-b border-gray-300;
+    @apply border-b border-site-border;
 }
 
 tbody tr:not(:last-child) {
-    @apply border-b border-gray-300;
+    @apply border-b border-site-border;
 }
 
 input[type='number'] {
-    @apply w-16 text-center text-xs border border-gray-300 rounded p-1;
+    @apply w-16 text-center text-xs border border-site-border rounded-md p-1 bg-white;
 }
 
 input[type='text'] {
-    @apply w-16 text-center text-xs border border-gray-300 rounded p-1;
+    @apply w-16 text-center text-xs border border-site-border rounded-md p-1 bg-white;
 }
 
 select {
-    @apply border border-gray-300 text-xs  rounded p-1 bg-white;
+    @apply border border-site-border text-xs rounded-md p-1 bg-white;
 }
 
 .observablehq {
@@ -102,7 +148,7 @@ select {
 }
 
 #vg-tooltip-element.vg-tooltip {
-    @apply bg-white text-xs shadow-md rounded p-1 mb-0;
+    @apply bg-white text-xs shadow-md rounded-md p-1 mb-0 border border-site-border;
     max-width: 450px;
 }
 
@@ -116,7 +162,7 @@ select {
 }
 
 #vg-tooltip-element.vg-tooltip td.key {
-    @apply px-0.5 py-0.5 text-right  m-0 text-xs;
+    @apply px-0.5 py-0.5 text-right m-0 text-xs;
 }
 
 #vg-tooltip-element.vg-tooltip td.value {
@@ -131,15 +177,15 @@ input[type='email'],
 input[type='search'],
 input[type='number'],
 input[type='file'] {
-    @apply text-xs text-gray-700 p-1 rounded text-left border border-gray-300 mr-2 mt-2 min-w-[70px];
+    @apply text-xs text-site-muted p-1 rounded-md text-left border border-site-border mr-2 mt-2 min-w-[70px];
 }
 
 input[type='button'] {
-    @apply text-xs bg-gray-200 text-gray-700 p-1 rounded border border-gray-300 mr-2 mt-2;
+    @apply text-xs bg-site-surface text-site-text p-1 rounded-md border border-site-border mr-2 mt-2;
 }
 
 textarea {
-    @apply text-sm text-gray-700 p-1 rounded text-left border border-gray-300 mr-2 mt-2;
+    @apply text-sm text-site-muted p-1 rounded-md text-left border border-site-border mr-2 mt-2;
 }
 
 input[type='text'] {
@@ -162,11 +208,11 @@ svg {
 }
 
 details {
-    @apply p-2 mb-4 text-gray-700;
+    @apply p-2 mb-4 text-site-muted;
 }
 
 summary {
-    @apply text-base font-semibold cursor-pointer mb-2 text-gray-700;
+    @apply text-base font-semibold cursor-pointer mb-2 text-site-text;
 }
 
 summary::-webkit-details-marker {
@@ -178,11 +224,11 @@ details[open] summary {
 }
 
 details > p {
-    @apply text-base text-gray-700 leading-relaxed;
+    @apply text-base text-site-muted leading-relaxed;
 }
 
 .mdx-content {
-    @apply text-gray-800;
+    @apply text-site-text max-w-reading;
 }
 
 .mdx-content p {
@@ -194,7 +240,7 @@ details > p {
 }
 
 .mdx-content h2 {
-    @apply mt-12 mb-4;
+    @apply mt-14 mb-4;
 }
 
 .mdx-content h3 {
@@ -210,15 +256,8 @@ details > p {
     @apply my-8;
 }
 
-.cursor {
-    margin-left: 2px;
-    animation: blink 1.2s steps(1) infinite;
-}
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
+.mdx-content img {
+    @apply rounded-2xl border border-site-border;
 }
 
 .cursor {
@@ -233,28 +272,26 @@ details > p {
 }
 
 .rotating-identity-line {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    margin-bottom: 1.5rem;
+    @apply text-xl leading-8 mb-6 font-medium text-site-text;
 }
 
 .rotating-identity-word {
-    color: #1915fd;
+    color: var(--accent);
     display: inline-block;
 }
 
 .rotating-identity-word.shimmer-text {
     background: linear-gradient(
         90deg,
-        #1915fd 0%,
-        #4f46e5 35%,
-        #a855f7 50%,
-        #4f46e5 65%,
-        #1915fd 100%
+        #2f5d50 0%,
+        #427767 35%,
+        #7aa395 50%,
+        #427767 65%,
+        #2f5d50 100%
     );
     background-size: 200% auto;
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
-    animation: shimmer 3s linear infinite;
+    animation: shimmer 5s linear infinite;
 }

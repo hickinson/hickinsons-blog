@@ -14,18 +14,17 @@ const PostCodeLink = ({ frontmatter }) => {
     }
 
     return (
-        <p className="text-gray-400 text-sm">
-            Originally posted: {post_date}.{' '}
+        <p className="mb-8 text-sm leading-7 text-site-muted">
+            Originally posted: {post_date}.
             {post_latest_update && ` Last updated: ${post_latest_update}.`}{' '}
             {text}{' '}
             <a
                 href={code_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 text-sm"
             >
-                here.
-            </a>
+                here
+            </a>.
         </p>
     );
 };

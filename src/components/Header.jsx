@@ -9,24 +9,27 @@ import {
 } from 'react-icons/fa';
 
 import ResponsiveLink from './ResponsiveIcon';
-
 import '../styles/shimmer.css';
+
+const iconLinkClassName =
+    'text-site-muted hover:text-site-text transition-colors duration-200';
 
 const Header = () => {
     return (
-        <div>
-            <div className="flex justify-between items-center py-4">
-                <div className="flex items-center space-x-4">
-                    <div className="text-base font-mono font-semibold shimmer-text">
-                        <Link
-                            to="/"
-                            className="text-base font-mono font-bold shimmer-text"
-                        >
-                            &gt;hickinsons
-                        </Link>
-                    </div>
-                </div>
-                <div className="flex items-center space-x-3">
+        <header className="pt-5 pb-4">
+            <div className="flex items-center justify-between gap-4">
+                <Link
+                    to="/"
+                    className="font-mono text-[0.98rem] font-semibold tracking-[-0.03em] text-site-text no-underline"
+                    aria-label="Go to homepage"
+                >
+                    <span className="shimmer-text">&gt;hickinsons</span>
+                </Link>
+
+                <nav
+                    className="flex items-center gap-3 sm:gap-4"
+                    aria-label="Primary"
+                >
                     <ResponsiveLink
                         text="Home"
                         IconComponent={FaHome}
@@ -38,37 +41,40 @@ const Header = () => {
                         route="/about"
                     />
 
-                    
                     <a
                         href="https://twitter.com/hickinsons"
-                        className="text-gray-600 hover:text-blue-700 transition ease-in duration-200"
+                        className={iconLinkClassName}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="X / Twitter"
                     >
-                        <FaTwitter className="w-4.5 h-4.5" />
+                        <FaTwitter className="h-[1rem] w-[1rem]" />
                     </a>
 
                     <a
                         href="https://github.com/hickinson"
-                        className="text-gray-600 hover:text-blue-700 transition ease-in duration-200"
+                        className={iconLinkClassName}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="GitHub"
                     >
-                        <FaGithub className="w-4.5 h-4.5" />
+                        <FaGithub className="h-[1rem] w-[1rem]" />
                     </a>
+
                     <a
                         href="https://www.linkedin.com/in/hickinsons/"
-                        className="text-gray-600 hover:text-blue-700 transition ease-in duration-200"
+                        className={iconLinkClassName}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="LinkedIn"
                     >
-                        <FaLinkedin className="w-4.5 h-4.5" />
+                        <FaLinkedin className="h-[1rem] w-[1rem]" />
                     </a>
-                    
-                </div>
+                </nav>
             </div>
-            <hr className="border-gray-300 mb-4" />
-        </div>
+
+            <div className="mt-4 border-b border-site-border" />
+        </header>
     );
 };
 

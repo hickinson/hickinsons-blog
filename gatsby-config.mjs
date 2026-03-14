@@ -52,15 +52,15 @@ const config = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `source serif pro:600`,
-          `source sans pro:400`
-        ],
-        display: 'swap'
-      }
-    },
+  resolve: `gatsby-plugin-google-fonts`,
+  options: {
+    fonts: [
+      `Newsreader:500,600,700`,
+      `Inter:400,500,600,700`
+    ],
+    display: 'swap'
+  }
+},
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
