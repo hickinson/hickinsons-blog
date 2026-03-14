@@ -9,11 +9,6 @@ const words = [
   "Entrepreneur"
 ];
 
-function getArticle(word) {
-  const firstLetter = word.charAt(0).toLowerCase();
-  return ["a", "e", "i", "o", "u"].includes(firstLetter) ? "an" : "a";
-}
-
 export default function RotatingIdentity() {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
@@ -51,13 +46,10 @@ export default function RotatingIdentity() {
     return () => clearTimeout(timeout);
   }, [displayedText, isDeleting, wordIndex]);
 
-  const article = displayedText ? getArticle(displayedText) : getArticle(words[wordIndex]);
-
   return (
-    <span>
-      I'm {article}{" "}
+    <div className="rotating-identity-line">
       <strong className="rotating-identity-word">{displayedText}</strong>
       <span className="cursor">|</span>
-    </span>
+    </div>
   );
 }

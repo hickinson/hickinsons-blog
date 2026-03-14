@@ -232,6 +232,12 @@ details > p {
     }
 }
 
+.rotating-identity-line {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
 .rotating-identity-word {
     color: #1915fd;
     display: inline-block;
