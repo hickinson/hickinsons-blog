@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const words = [
-  "dad",
-  "builder",
-  "technologist",
-  "data thinker",
-  "creator",
-  "entrepreneur"
+  "Dad",
+  "Builder",
+  "Technologist",
+  "Data thinker",
+  "Creator",
+  "Entrepreneur"
 ];
 
 function getArticle(word) {
@@ -15,23 +15,49 @@ function getArticle(word) {
 }
 
 export default function RotatingIdentity() {
-  const [index, setIndex] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2500);
+    const currentWord = words[wordIndex];
+    const typingSpeed = isDeleting ? 45 : 85;
+    const pauseAfterTyping = 1400;
+    const pauseBeforeTyping = 250;
 
-    return () => clearInterval(interval);
-  }, []);
+    let timeout;
 
-  const word = words[index];
-  const article = getArticle(word);
+    if (!isDeleting && displayedText === "") {
+      timeout = setTimeout(() => {
+        setDisplayedText(currentWord.slice(0, 1));
+      }, pauseBeforeTyping);
+    } else if (!isDeleting && displayedText !== currentWord) {
+      timeout = setTimeout(() => {
+        setDisplayedText(currentWord.slice(0, displayedText.length + 1));
+      }, typingSpeed);
+    } else if (!isDeleting && displayedText === currentWord) {
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, pauseAfterTyping);
+    } else if (isDeleting && displayedText.length > 0) {
+      timeout = setTimeout(() => {
+        setDisplayedText(currentWord.slice(0, displayedText.length - 1));
+      }, typingSpeed);
+    } else if (isDeleting && displayedText.length === 0) {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, wordIndex]);
+
+  const article = displayedText ? getArticle(displayedText) : getArticle(words[wordIndex]);
 
   return (
     <span>
-      I'm {article} <strong style={{ color: "#1915fd" }}>{word}</strong>
-      <span className="cursor">|</span>.
+      I'm {article}{" "}
+      <strong className="rotating-identity-word">{displayedText}</strong>
+      <span className="cursor">|</span>
     </span>
   );
 }
