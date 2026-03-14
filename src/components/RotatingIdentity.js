@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const words = [
-  "Dad",
-  "Builder",
-  "Technologist",
-  "Data thinker",
-  "Creator",
-  "Entrepreneur"
+  "Dad.",
+  "Builder.",
+  "Technologist.",
+  "Data thinker.",
+  "Creator.",
+  "Entrepreneur."
 ];
 
 export default function RotatingIdentity() {
