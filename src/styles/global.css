@@ -210,9 +210,13 @@ details > p {
     @apply my-8;
 }
 
-return (
-  <span>
-    I'm a <strong style={{ color: "#1915fd" }}>{words[index]}</strong>
-    <span className="cursor">_</span>
-  </span>
-);
+.cursor {
+    margin-left: 2px;
+    animation: blink 1.2s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
