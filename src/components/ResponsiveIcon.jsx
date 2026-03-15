@@ -22,12 +22,12 @@ const ResponsiveLink = ({ text, IconComponent, route }) => {
     return (
         <Link
             to={route}
-            className="text-sm font-medium text-site-muted no-underline transition-colors duration-200 hover:text-site-text"
+            className="text-[0.98rem] font-medium text-site-muted no-underline transition-colors duration-200 hover:text-site-text"
         >
             {windowWidth > 500 ? (
                 text
             ) : (
-                <IconComponent className="h-[1rem] w-[1rem]" />
+                <IconComponent className="h-[1.02rem] w-[1.02rem]" />
             )}
         </Link>
     );

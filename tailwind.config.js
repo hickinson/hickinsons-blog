@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Newsreader"', 'Georgia', 'serif'],
+        serif: ['"Inter"', 'Arial', 'sans-serif'],
         sans: ['"Inter"', 'Arial', 'sans-serif'],
         mono: ['"IBM Plex Mono"', '"SFMono-Regular"', 'monospace'],
       },

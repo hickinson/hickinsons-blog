@@ -55,8 +55,7 @@ const config = {
   resolve: `gatsby-plugin-google-fonts`,
   options: {
     fonts: [
-      `Newsreader:500,600,700`,
-      `Inter:400,500,600,700`
+      `Inter:400,500,600,700,800`
     ],
     display: 'swap'
   }

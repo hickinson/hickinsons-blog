@@ -16,11 +16,11 @@ const iconLinkClassName =
 
 const Header = () => {
     return (
-        <header className="pt-5 pb-4">
+        <header className="pt-6 pb-5">
             <div className="flex items-center justify-between gap-4">
                 <Link
                     to="/"
-                    className="font-mono text-[0.98rem] font-semibold tracking-[-0.03em] text-site-text no-underline"
+                    className="font-mono text-[1.18rem] sm:text-[1.25rem] font-bold tracking-[-0.04em] text-site-text no-underline"
                     aria-label="Go to homepage"
                 >
                     <span className="shimmer-text">&gt;hickinsons</span>
@@ -48,7 +48,7 @@ const Header = () => {
                         rel="noopener noreferrer"
                         aria-label="X / Twitter"
                     >
-                        <FaTwitter className="h-[1rem] w-[1rem]" />
+                        <FaTwitter className="h-[1.02rem] w-[1.02rem]" />
                     </a>
 
                     <a
@@ -58,7 +58,7 @@ const Header = () => {
                         rel="noopener noreferrer"
                         aria-label="GitHub"
                     >
-                        <FaGithub className="h-[1rem] w-[1rem]" />
+                        <FaGithub className="h-[1.02rem] w-[1.02rem]" />
                     </a>
 
                     <a
@@ -68,12 +68,12 @@ const Header = () => {
                         rel="noopener noreferrer"
                         aria-label="LinkedIn"
                     >
-                        <FaLinkedin className="h-[1rem] w-[1rem]" />
+                        <FaLinkedin className="h-[1.02rem] w-[1.02rem]" />
                     </a>
                 </nav>
             </div>
 
-            <div className="mt-4 border-b border-site-border" />
+            <div className="mt-5 border-b border-site-border" />
         </header>
     );
 };

@@ -1,27 +1,34 @@
 .shimmer-text {
     color: transparent;
     background: linear-gradient(
-        90deg,
-        #1d1d1b 0%,
-        #2f5d50 40%,
+        105deg,
+        #111111 0%,
+        #3a3a38 18%,
+        #b7b8b3 32%,
+        #5e665f 45%,
+        #d4d5cf 52%,
+        #454743 63%,
+        #1d1d1b 78%,
+        #7a847d 90%,
         #1d1d1b 100%
     );
-    background-size: 200% 100%;
-    animation: shimmer 10s ease-in-out infinite;
+    background-size: 220% 100%;
+    background-position: 100% 50%;
     background-clip: text;
     -webkit-background-clip: text;
+    animation: metallicShimmer 11s ease-in-out infinite;
 }
 
-@keyframes shimmer {
+@keyframes metallicShimmer {
     0%,
     100% {
-        background-position: 100% 0;
+        background-position: 100% 50%;
     }
     50% {
-        background-position: 0% 0;
+        background-position: 0% 50%;
     }
 }
 
 .shimmer-text:hover {
-    animation-duration: 4s;
+    animation-duration: 5.5s;
 }
