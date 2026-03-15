@@ -20,10 +20,10 @@ const Header = () => {
             <div className="flex items-center justify-between gap-4">
                 <Link
                     to="/"
-                    className="font-mono text-[1.18rem] sm:text-[1.25rem] font-bold tracking-[-0.04em] text-site-text no-underline"
+                    className="font-mono text-[1.1rem] sm:text-[1.2rem] font-bold tracking-[-0.04em] text-site-text no-underline"
                     aria-label="Go to homepage"
                 >
-                    <span className="shimmer-text">&gt;hickinsons</span>
+                    <span className="shimmer-text">&gt;hickinsons.blog</span>
                 </Link>
 
                 <nav
