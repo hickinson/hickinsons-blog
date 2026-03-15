@@ -1,0 +1,33 @@
+---
+title: "Post title here"
+description: "One clear sentence explaining what the post is about."
+post_date: "2026-03-15"
+post_category: "other"
+image: "/og-default.png"
+---
+
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
+
+Opening paragraph. Start with the point quickly and clearly.
+
+A second paragraph can widen the frame, explain the context, or introduce the tension.
+
+## Section heading
+
+Develop the idea.
+
+## Another section
+
+Add supporting examples, reflections, or lessons.
+
+## Closing thought
+
+End cleanly. One final paragraph is usually enough.
