@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 const words = [
-  "Dad.",
   "Builder.",
+  "Leader.",
+  "Father.",
   "Technologist.",
-  "Data thinker.",
   "Creator.",
   "Entrepreneur."
 ];
@@ -16,9 +16,9 @@ export default function RotatingIdentity() {
 
   useEffect(() => {
     const currentWord = words[wordIndex];
-    const typingSpeed = isDeleting ? 45 : 85;
-    const pauseAfterTyping = 1400;
-    const pauseBeforeTyping = 250;
+    const typingSpeed = isDeleting ? 40 : 75;
+    const pauseAfterTyping = 1500;
+    const pauseBeforeTyping = 200;
 
     let timeout;
 
@@ -48,7 +48,8 @@ export default function RotatingIdentity() {
 
   return (
     <div className="rotating-identity-line">
-      <strong className="rotating-identity-word">{displayedText}</strong>
+      <span className="mr-2 text-site-muted">I’m a</span>
+      <strong className="rotating-identity-word shimmer-text">{displayedText}</strong>
       <span className="cursor">|</span>
     </div>
   );

@@ -3,12 +3,14 @@ import profilePic from '../images/headshot.jpg';
 
 const HeadShot = () => {
     return (
-        <div className="w-40 h-40 mx-auto mb-5 rounded-full border border-gray-300 overflow-hidden shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-            <img
-                src={profilePic}
-                alt="Phil"
-                className="w-full h-full object-cover"
-            />
+        <div className="mb-8">
+            <div className="h-40 w-40 overflow-hidden rounded-full border border-site-border bg-white shadow-soft">
+                <img
+                    src={profilePic}
+                    alt="Phil Hickinson"
+                    className="h-full w-full object-cover"
+                />
+            </div>
         </div>
     );
 };

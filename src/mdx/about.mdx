@@ -7,36 +7,100 @@ post_category: non_blog_post
 
 export { Layout as default } from '../components/Layout';
 import { SEO } from "../components/SEO"
-export const Head = (props) => (
-  <SEO frontmatter={props?.pageContext?.frontmatter || {}} />
-);
+import { Section } from "../components/Section"
 import HeadShot from '../components/HeadShot';
 import RotatingIdentity from '../components/RotatingIdentity';
 
-<HeadShot />
+export const Head = (props) => (
+  <SEO frontmatter={props?.pageContext?.frontmatter || {}} />
+);
 
-Hi, I'm Phil. 
+<Section>
+  <div className="max-w-[46rem] pt-4 md:pt-6">
+    <HeadShot />
 
-<RotatingIdentity />
+    <p className="mb-3 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-site-muted">
+      About
+    </p>
 
-I’m interested in building things that last and thinking clearly in a noisy world.
+    <h1 className="mb-5">
+      Phil Hickinson
+    </h1>
 
-By day I work across data, digital platforms and organisational change in the public sector. Much of that work involves making sense of complex systems, modernising, and helping people to use data and technology in ways that support better decisions and services.
+    <RotatingIdentity />
 
-But this site isn’t just about work.
+    <p className="max-w-reading text-[1.08rem] leading-[1.9] text-site-muted mb-6">
+      I’m interested in building things that last and thinking clearly in a noisy world.
+    </p>
 
-It’s a place to explore ideas around leadership, personal responsibility, and the craft of building things well. Some posts will be about data, platforms and transformation. Others will drift into projects, life, entrepreneurship, belief, discipline, and the long game of creating something meaningful.
+    <p className="max-w-reading text-site-muted mb-6">
+      By day I work across data, digital platforms and organisational change in the public sector. Much of that work involves making sense of complex systems, modernising, and helping people use data and technology in ways that support better decisions and services.
+    </p>
 
-I’m less interested in hype and more interested in things that endure: clear thinking, strong teams, useful systems, and a life built with intention.
+    <p className="max-w-reading text-site-muted mb-0">
+      But this site isn’t just about work.
+    </p>
+  </div>
+</Section>
 
-If that resonates, you’ll probably feel at home here.
+<Section>
+  <div className="max-w-[46rem]">
+    <p className="max-w-reading text-site-muted mb-6">
+      It’s a place to explore ideas around leadership, personal responsibility, and the craft of building things well. Some posts are about data, platforms and transformation. Others drift into projects, life, entrepreneurship, belief, discipline, and the long game of creating something meaningful.
+    </p>
 
-## Elsewhere
+    <p className="max-w-reading text-site-muted mb-6">
+      I’m less interested in hype and more interested in things that endure: clear thinking, strong teams, useful systems, and a life built with intention.
+    </p>
 
-- X/Twitter: [@hickinsons](https://twitter.com/hickinsons)
-- LinkedIn: [Phil Hickinson](https://www.linkedin.com/in/hickinsons)
-- Email: phil@hickinsons.blog
-- Github: [hickinson](https://github.com/hickinson)
+    <p className="max-w-reading text-site-muted mb-0">
+      If that resonates, you’ll probably feel at home here.
+    </p>
+  </div>
+</Section>
 
+<Section>
+  <div className="max-w-[46rem]">
+    <p className="mb-3 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-site-muted">
+      Elsewhere
+    </p>
 
+    <div className="overflow-hidden rounded-soft border border-site-border bg-white">
+      <div className="border-b border-site-border px-4 py-4 md:px-5">
+        <p className="mb-1 text-site-text">
+          X / Twitter
+        </p>
+        <p className="mb-0 text-site-muted">
+          <a href="https://twitter.com/hickinsons">@hickinsons</a>
+        </p>
+      </div>
 
+      <div className="border-b border-site-border px-4 py-4 md:px-5">
+        <p className="mb-1 text-site-text">
+          LinkedIn
+        </p>
+        <p className="mb-0 text-site-muted">
+          <a href="https://www.linkedin.com/in/hickinsons/">Phil Hickinson</a>
+        </p>
+      </div>
+
+      <div className="border-b border-site-border px-4 py-4 md:px-5">
+        <p className="mb-1 text-site-text">
+          Email
+        </p>
+        <p className="mb-0 text-site-muted">
+          phil@hickinsons.blog
+        </p>
+      </div>
+
+      <div className="px-4 py-4 md:px-5">
+        <p className="mb-1 text-site-text">
+          GitHub
+        </p>
+        <p className="mb-0 text-site-muted">
+          <a href="https://github.com/hickinson">hickinson</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</Section>
