@@ -1,6 +1,6 @@
 ---
-title: About
-description: About
+title: "About"
+description: "About Phil Hickinson: writing on data, leadership, systems, building, discipline, and thoughtful work."
 post_date: 2023-09-11
 post_category: non_blog_post
 ---
@@ -12,7 +12,10 @@ import HeadShot from '../components/HeadShot';
 import RotatingIdentity from '../components/RotatingIdentity';
 
 export const Head = (props) => (
-  <SEO frontmatter={props?.pageContext?.frontmatter || {}} />
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
 );
 
 <Section>

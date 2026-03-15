@@ -1,6 +1,8 @@
 ---
-post_category: non_blog_post
+title: "hickinsons.blog"
+description: "A blog about data and digital transformation, leadership, systems, building, projects, life, and making sense of a noisy world."
 post_date: 2023-09-11
+post_category: non_blog_post
 ---
 
 export { Layout as default } from '../components/Layout';
@@ -9,7 +11,10 @@ import { Section } from "../components/Section"
 import PostList from '../components/PostList';
 
 export const Head = (props) => (
-  <SEO frontmatter={props?.pageContext?.frontmatter || {}} />
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
 );
 
 <Section>
