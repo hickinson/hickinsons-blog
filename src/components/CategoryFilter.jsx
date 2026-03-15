@@ -1,39 +1,49 @@
 import React from 'react';
 
-const CategoryFilter = ({ categories, selectedCategory, onSelectCategory }) => {
-    const categoryTitles = {
-        latest: 'Latest',
+const formatCategoryLabel = category => {
+    const labels = {
+        all: 'All',
         data: 'Data',
-        probabilistic_linkage: 'Probabilistic linkage',
-        energy: 'Energy',
+        leadership: 'Leadership',
+        systems: 'Systems',
+        building: 'Building',
+        projects: 'Projects',
+        life: 'Life',
+        notes: 'Notes',
         other: 'Other',
-        quotes_links: 'Quotes/Links'
     };
 
+    return labels[category] || category;
+};
+
+const CategoryFilter = ({
+    categories,
+    selectedCategory,
+    onSelectCategory,
+}) => {
+    const allOptions = ['all', ...categories];
+
     return (
-        <div className="mb-5 text-xs">
-            <strong className="mr-2 text-sm">Filter:</strong>
-            <button
-                className={`px-2 py-1 mr-2 rounded-md transition ease-in-out duration-200 hover:shadow-lg ${selectedCategory === 'all'
-                    ? 'bg-gray-300 text-white'
-                    : 'bg-white text-gray-600 hover:bg-gray-200'
-                    }`}
-                onClick={() => onSelectCategory('all')}
-            >
-                All
-            </button>
-            {categories.map(category => (
-                <button
-                    key={category}
-                    className={`px-2 py-1 mr-2 rounded-md transition ease-in-out duration-200 hover:shadow-lg ${selectedCategory === category
-                        ? 'bg-gray-300 text-white'
-                        : 'bg-white text-gray-600 hover:bg-gray-200'
-                        }`}
-                    onClick={() => onSelectCategory(category)}
-                >
-                    {categoryTitles[category] || category.replace(/_/g, ' ')}
-                </button>
-            ))}
+        <div className="flex flex-wrap gap-2">
+            {allOptions.map(category => {
+                const isActive = selectedCategory === category;
+
+                return (
+                    <button
+                        key={category}
+                        type="button"
+                        onClick={() => onSelectCategory(category)}
+                        className={[
+                            'inline-flex items-center justify-center rounded-pill px-4 py-2 text-[0.92rem] font-semibold tracking-[-0.01em] transition-all duration-200',
+                            isActive
+                                ? 'bg-site-text text-site-bg shadow-soft'
+                                : 'border border-site-border bg-site-bg text-site-text hover:-translate-y-[1px] hover:bg-white',
+                        ].join(' ')}
+                    >
+                        {formatCategoryLabel(category)}
+                    </button>
+                );
+            })}
         </div>
     );
 };

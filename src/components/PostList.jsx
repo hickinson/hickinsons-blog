@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import CategoryPostList from './CategoryPostList';
 import CategoryFilter from './CategoryFilter';
@@ -19,7 +19,7 @@ const usePosts = () => {
                     frontmatter {
                         title
                         description
-                        post_date(formatString: "YYYY-MM-DD")
+                        post_date(formatString: "DD MMMM YYYY")
                         post_category
                     }
                 }
@@ -30,96 +30,141 @@ const usePosts = () => {
     return data.allMdx.nodes;
 };
 
+const legacyCategoryMap = {
+    probabilistic_linkage: 'other',
+    energy: 'other',
+    quotes_links: 'notes',
+};
+
+const normaliseCategory = category => {
+    if (!category) return 'other';
+    return legacyCategoryMap[category] || category;
+};
+
 const filterPosts = (posts, selectedCategory) => {
-    if (selectedCategory === 'all') {
-        return posts;
-    } else {
-        return posts.filter(
-            post => post.frontmatter.post_category === selectedCategory
-        );
-    }
+    if (selectedCategory === 'all') return posts;
+
+    return posts.filter(
+        post => normaliseCategory(post.frontmatter.post_category) === selectedCategory
+    );
 };
 
 const groupPostsByCategory = (posts, includeLatest = false) => {
     let categorizedPosts = posts.reduce((acc, node) => {
-        const category = node.frontmatter.post_category || 'other';
+        const category = normaliseCategory(node.frontmatter.post_category);
         if (!acc[category]) acc[category] = [];
         acc[category].push(node);
         return acc;
     }, {});
 
     if (includeLatest) {
-        const nonQuotesPosts = posts.filter(
-            post => post.frontmatter.post_category !== 'quotes_links'
-        );
-        categorizedPosts = { latest: nonQuotesPosts.slice(0, 3), ...categorizedPosts };
+        categorizedPosts = {
+            latest: posts.slice(0, 3),
+            ...categorizedPosts,
+        };
     }
 
     return categorizedPosts;
 };
 
+const headerOrder = [
+    'latest',
+    'data',
+    'leadership',
+    'systems',
+    'building',
+    'projects',
+    'life',
+    'notes',
+    'other',
+];
+
+const categoryTitles = {
+    latest: 'Start here',
+    data: 'Data and digital transformation',
+    leadership: 'Leadership and organisational culture',
+    systems: 'Systems and architecture',
+    building: 'Building things',
+    projects: 'Projects',
+    life: 'Life and discipline',
+    notes: 'Notes and references',
+    other: 'Other writing',
+};
+
+const categoryDescriptions = {
+    latest: 'A few recent pieces to begin with.',
+    data: 'Writing on data platforms, analytics and transformation.',
+    leadership: 'Leadership, organisational culture and change.',
+    systems: 'Architecture, engineering thinking and systems design.',
+    building: 'Thoughts on creating products, making, and experimentation.',
+    projects: 'Updates and reflections on projects being built.',
+    life: 'Reflections on discipline, philosophy and personal growth.',
+    notes: 'Shorter ideas, references, links and collected thoughts.',
+    other: 'Writing that sits outside the main themes.',
+};
+
 const PostList = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const allPosts = usePosts();
-    const filteredPosts = filterPosts(allPosts, selectedCategory);
+
+    const availableCategories = useMemo(() => {
+        const found = new Set(
+            allPosts.map(post => normaliseCategory(post.frontmatter.post_category))
+        );
+
+        return headerOrder.filter(
+            category => category !== 'latest' && found.has(category)
+        );
+    }, [allPosts]);
+
+    const filteredPosts = useMemo(() => {
+        return filterPosts(allPosts, selectedCategory);
+    }, [allPosts, selectedCategory]);
+
     const includeLatest = selectedCategory === 'all';
-    const postsByCategory = groupPostsByCategory(filteredPosts, includeLatest);
 
-    const headerOrder = [
-        'latest',
-        'data',
-        'probabilistic_linkage',
-        'energy',
-        'other',
-        'quotes_links'
-    ];
-
-    const categoryTitles = {
-        latest: 'Latest Posts',
-        data: 'Data science and engineering',
-        probabilistic_linkage: 'Probabilistic record linkage',
-        energy: 'Energy and climate change',
-        other: 'Other',
-        quotes_links: 'Quotes and Links'
-    };
-
-    const allCategories = [
-        ...new Set(
-            allPosts.map(post => post.frontmatter.post_category || 'other')
-        ),
-    ].filter(category => headerOrder.includes(category));
-
-    const sortedCategories = allCategories.sort((a, b) => {
-        const indexA = headerOrder.indexOf(a);
-        const indexB = headerOrder.indexOf(b);
-
-        if (indexA === -1 && indexB === -1) return 0;
-        if (indexA === -1) return 1;
-        if (indexB === -1) return -1;
-
-        return indexA - indexB;
-    });
+    const postsByCategory = useMemo(() => {
+        return groupPostsByCategory(filteredPosts, includeLatest);
+    }, [filteredPosts, includeLatest]);
 
     return (
-        <div>
-            <div>
-                <CategoryFilter
-                    categories={sortedCategories}
-                    selectedCategory={selectedCategory}
-                    onSelectCategory={setSelectedCategory}
-                />
+        <div className="space-y-10 md:space-y-12">
+            <div className="rounded-soft border border-site-border bg-site-surface px-4 py-4 md:px-5 md:py-5">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <p className="mb-1 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-site-muted">
+                            Browse
+                        </p>
+                        <p className="mb-0 text-sm leading-6 text-site-muted">
+                            Filter posts by theme, or explore everything.
+                        </p>
+                    </div>
+
+                    <CategoryFilter
+                        categories={availableCategories}
+                        selectedCategory={selectedCategory}
+                        onSelectCategory={setSelectedCategory}
+                    />
+                </div>
             </div>
-            {headerOrder.map(
-                (categoryKey) =>
-                    postsByCategory[categoryKey]?.length > 0 && (
+
+            <div className="space-y-12 md:space-y-14">
+                {headerOrder.map(categoryKey => {
+                    const posts = postsByCategory[categoryKey];
+
+                    if (!posts || posts.length === 0) return null;
+
+                    return (
                         <CategoryPostList
-                            key={categoryKey} // Use categoryKey as the key
+                            key={categoryKey}
                             categoryKey={categoryKey}
-                            posts={postsByCategory[categoryKey]}
+                            posts={posts}
                             categoryTitles={categoryTitles}
+                            categoryDescriptions={categoryDescriptions}
                         />
-                    )
-            )}
+                    );
+                })}
+            </div>
         </div>
     );
 };
