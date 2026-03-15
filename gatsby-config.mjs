@@ -20,7 +20,7 @@ const config = {
     description: `A blog about data and digital transformation, leadership, systems, building, projects, life, and making sense of a noisy world.`,
     siteUrl,
     twitterUsername: `@hickinsons`,
-    image: `/gatsby-icon.png`,
+    image: `/og-default.png`,
   },
   plugins: [
     "gatsby-plugin-postcss",
