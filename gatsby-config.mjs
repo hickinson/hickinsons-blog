@@ -1,15 +1,12 @@
 import { env } from 'process';
 import remarkGfm from 'remark-gfm';
-import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
-const siteUrl = env.URL || `https://hickinsons.blog`
 
-
-
-
+const siteUrl = env.URL || `https://hickinsons.blog`;
 
 const config = {
   pathPrefix: "",
@@ -20,12 +17,13 @@ const config = {
   },
   siteMetadata: {
     title: `hickinsons.blog`,
-    description: `Writing about data, digital, leadership, building, and the journey.`,
-    siteUrl: siteUrl,
+    description: `A blog about data and digital transformation, leadership, systems, building, projects, life, and making sense of a noisy world.`,
+    siteUrl,
     twitterUsername: `@hickinsons`,
     image: `/gatsby-icon.png`,
   },
-  plugins: ["gatsby-plugin-postcss",
+  plugins: [
+    "gatsby-plugin-postcss",
     `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
     {
@@ -34,9 +32,7 @@ const config = {
         lessBabel: false,
         mdxOptions: {
           remarkPlugins: [remarkGfm, remarkMath],
-          rehypePlugins: [
-            [rehypeKatex, { strict: 'ignore' }],
-          ],
+          rehypePlugins: [[rehypeKatex, { strict: 'ignore' }]],
         },
         gatsbyRemarkPlugins: [
           {
@@ -52,20 +48,16 @@ const config = {
       },
     },
     {
-  resolve: `gatsby-plugin-google-fonts`,
-  options: {
-    fonts: [
-      `Inter:400,500,600,700,800`
-    ],
-    display: 'swap'
-  }
-},
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Inter:400,500,600,700,800`],
+        display: 'swap'
+      }
+    },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [
-          "G-94373ZKHEE"
-        ],
+        trackingIds: ["G-94373ZKHEE"],
         gtagConfig: {
           anonymize_ip: true,
         },
@@ -74,15 +66,15 @@ const config = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "mdx",
-        "path": "./src/mdx/"
+        name: "mdx",
+        path: "./src/mdx/"
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "mdx",
-        "path": "./src/images/"
+        name: "images",
+        path: "./src/images/"
       }
     },
     {
@@ -121,22 +113,17 @@ const config = {
         `,
         resolveSiteUrl: () => siteUrl,
         resolvePages: ({ allMdx: { edges: allMdxPages } }) => {
-          return allMdxPages.map(({ node }) => {
-            return {
-              path: node.fields.slug,
-              frontmatter: node.frontmatter
-            };
-          });
+          return allMdxPages.map(({ node }) => ({
+            path: node.fields.slug,
+            frontmatter: node.frontmatter
+          }));
         },
-        serialize: ({ path, frontmatter }) => {
-          return {
-            url: path,
-            lastmod: frontmatter.post_date,
-          };
-        },
+        serialize: ({ path, frontmatter }) => ({
+          url: path,
+          lastmod: frontmatter.post_date,
+        }),
       },
     },
-
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -145,13 +132,12 @@ const config = {
             serialize: ({ query: { site, allMdx } }) => {
               return allMdx.nodes
                 .filter(node => node.frontmatter.post_category !== "non_blog_post")
-                .map(node => Object.assign({}, {
+                .map(node => ({
                   title: node.frontmatter.title,
                   description: node.frontmatter.description,
                   date: node.frontmatter.post_date,
                   url: `${site.siteMetadata.siteUrl}${node.fields.slug}`,
                   guid: `${site.siteMetadata.siteUrl}${node.fields.slug}`,
-
                 }));
             },
             query: `
@@ -172,7 +158,7 @@ const config = {
             }
             `,
             output: "/rss.xml",
-            title: "hickinsons.blog: Data, digital, leadership and much more!",
+            title: "hickinsons.blog | Writing on data, leadership, systems and building",
           },
         ],
       }
@@ -180,18 +166,17 @@ const config = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "content",
-        "path": "./src/links_quotes_markdown/"
+        name: "content",
+        path: "./src/links_quotes_markdown/"
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "content",
-        "path": "./src/microblog_md/"
+        name: "content",
+        path: "./src/microblog_md/"
       }
     },
-
   ]
 };
 
