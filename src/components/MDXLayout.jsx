@@ -18,9 +18,12 @@ export function MDXLayout({ children, pageContext }) {
 
     return (
         <Layout>
-            <div className="mx-auto max-w-reading py-6 md:py-10">
+            <div className="mx-auto max-w-reading py-8 md:py-12">
                 <MDXProvider components={components}>
-                    <PostInfo frontmatter={frontmatter} />
+                    <PostInfo frontmatter={frontmatter}>
+                        {children}
+                    </PostInfo>
+
                     <article
                         key={typeof window === 'undefined' ? 'server' : 'client'}
                         id="mdx-container-div"
@@ -40,9 +43,14 @@ export function MDXLayoutWide({ children, pageContext }) {
     return (
         <Layout className="mx-auto w-full max-w-screen-xl px-5 sm:px-6 lg:px-8">
             <MDXProvider components={components}>
-                <PostInfo frontmatter={frontmatter} />
-                <div id="mdx-container-div" className="mdx-content">
-                    {children}
+                <div className="mx-auto max-w-reading py-8 md:py-12">
+                    <PostInfo frontmatter={frontmatter}>
+                        {children}
+                    </PostInfo>
+
+                    <div id="mdx-container-div" className="mdx-content">
+                        {children}
+                    </div>
                 </div>
             </MDXProvider>
         </Layout>
@@ -55,9 +63,17 @@ export function MDXLayoutFull({ children, pageContext }) {
     return (
         <Layout className="w-full px-4">
             <MDXProvider components={components}>
-                <PostInfo frontmatter={frontmatter} />
-                <div id="mdx-container-div" className="mdx-content w-full max-w-none">
-                    {children}
+                <div className="mx-auto max-w-reading py-8 md:py-12">
+                    <PostInfo frontmatter={frontmatter}>
+                        {children}
+                    </PostInfo>
+
+                    <div
+                        id="mdx-container-div"
+                        className="mdx-content w-full max-w-none"
+                    >
+                        {children}
+                    </div>
                 </div>
             </MDXProvider>
         </Layout>
