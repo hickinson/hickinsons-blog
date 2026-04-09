@@ -1,9 +1,19 @@
 ---
 title: "Crustafarianism and the question we’re not ready to ask about AI"
-date: "2026-04-03"
-category: "systems"
+post_date: "2026-04-03"
+post_category: "systems"
 description: "What an emergent AI religion reveals about memory, identity, and meaning in modern systems."
 ---
+
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
 
 I’ve been working on something slightly unusual.
 
