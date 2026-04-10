@@ -1,0 +1,255 @@
+---
+title: "Service as Software"
+post_date: "2026-04-10"
+post_category: "systems"
+description: "Why AI may shift the real constraint from tools and output to expertise, culture, and creativity."
+---
+
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
+
+I’ve spent most of this week thinking about the same thing. Not AI in general.
+
+More specifically:
+
+what this actually means for the kind of work I already understand.
+
+Data engineering.  
+Data design.  
+Digital services.  
+Forms, interfaces, the layers where people actually interact with systems.
+
+Because that’s where the impact becomes real.
+
+## Starting from the work, not the hype
+
+A lot of the conversation starts at the top level. Big claims about AI changing everything.
+
+But I keep coming back to something more grounded. What happens to the day-to-day work?
+
+Designing data models.  
+Building pipelines.  
+Setting up services.  
+Creating interfaces people can actually use.
+
+Because if something is shifting, it should show up there first.
+
+## A strange kind of leverage
+
+One of the ideas I can’t shake is this:
+
+a team of 15 starting to look like a team of 40.
+
+Not because people are working harder but because certain types of effort just… collapse.
+
+The setup work.  
+The navigation of tools.  
+The repetitive structuring.  
+The bits that are necessary, but not where the real value sits.
+
+That’s exciting, but it’s also slightly uncomfortable.
+
+Because it raises a different question.
+
+If the output increases that much, what actually matters more?
+
+## It’s not just about speed
+
+It would be easy to frame this as productivity.
+
+Faster delivery.  
+More output.  
+Less time spent on low-value tasks.
+
+But I don’t think that’s the most interesting part. The more interesting part is what happens to thinking.
+
+Creativity.  
+Innovation.  
+The ability to take ideas from different places and combine them into something new.
+
+Edward De Bono called it “Serious Creativity”.
+
+That feels relevant again because if the friction drops, the constraint is no longer:
+
+can we build this?
+
+It becomes:
+
+can we think of something worth building?
+
+## The constraint moves
+
+There’s another layer to this.
+
+Even if the capability is there, not every team will realise it.
+
+It’s no longer just about tools, or even skill.
+
+It becomes about permission.
+
+Permission to experiment.  
+Permission to try things that aren’t fully defined.  
+Permission to use these tools in ways that don’t fit neatly into existing processes.
+
+That’s not a technical problem, it's a cultural one.
+
+## Safe space to think
+
+If a team is expected to deliver in the same way it always has, under the same controls, with no room to explore, then none of this really lands.
+
+You might get incremental gains but you don’t get the step change. The step change comes from people thinking differently.
+
+Trying things.  
+Combining ideas.  
+Working in slightly uncomfortable ways until something clicks.
+
+That requires a different kind of environment; one where it’s safe to experiment. Where not everything has to be production-ready on day one.
+
+Where leadership understands that some of the value comes from exploring the edge, not just delivering the plan.
+
+## This is where leadership shows up
+
+Which brings it back to something more familiar.
+
+Leadership.
+
+Not in the abstract sense. In the very practical sense of:
+
+what do you allow?  
+what do you encourage?  
+what do you shut down without realising it?
+
+Because it’s entirely possible to have access to all of this capability and still operate like nothing has changed.
+
+Same processes.  
+Same expectations.  
+Same narrow definitions of “good work”.
+
+And in that environment, a team of 15 will still behave like a team of 15 (or less).
+
+## Learning starts to look different
+
+Another theme that came up in conversations this week was learning. Not in a formal sense. In how people actually get better at what they do.
+
+Most of our models are still based on:
+
+courses  
+structured training  
+videos  
+tools in isolation  
+
+That all still has a place.
+
+But it starts to feel slightly out of step with what these systems make possible.
+
+If I can describe a problem, get guidance, iterate, and refine in real time, then the boundary between working and learning starts to blur.
+
+You’re not stepping away to learn something. You’re learning in the moment you need it.
+
+## The idea of a learning assistant
+
+One of the more interesting questions that came out of this was:
+
+do you end up with something closer to a personal learning assistant?
+
+Something that:
+
+understands how you work  
+adapts to your level  
+fills gaps as they appear  
+improves over time as it “gets to know you”  
+
+Not as a replacement for expertise, but as a way of accelerating how that expertise develops.
+
+Which again shifts the constraint. From access to knowledge, to how well you can apply and build on it.
+
+## The bit nobody talks about
+
+There’s also a more mundane angle that I think matters.
+
+The grunt work.
+
+Admin, like setting up boards.  
+Navigating tools like Planner/ADO.  
+Structuring work in ways that are required, but rarely enjoyable.
+
+What happens when that layer becomes natural language? When you can describe what you need, and an assistant handles the setup?
+
+That’s not just faster. It potentially raises the standard of that work because the things people avoid doing properly suddenly become easy to get right.
+
+## The structure question
+
+There’s also a question here about how organisations respond. If smaller teams can suddenly produce much more, what happens to the way we structure work?
+
+There’s a version of Conway’s Law that starts to feel relevant. If systems reflect organisational structure, and the capability of small teams increases significantly, then something has to give.
+
+Either structures adapt or capability gets constrained by the way the organisation is set up.
+
+There’s a similar tension with how work expands. Just because something can be done faster doesn’t always mean it is.
+
+Processes grow.  
+Steps accumulate.  
+Expectations shift.  
+
+So part of this isn’t just about what’s possible, it’s about whether organisations actually let that possibility translate into better outcomes.
+
+## Do we still need to work in sequence?
+
+Another thought I’ve been circling this week is how this might affect the way we structure delivery.
+
+In most environments, change still follows a fairly linear path.
+
+Stabilise.  
+Then standardise.  
+Then optimise.  
+
+That order makes sense when coordination is expensive, and when each stage depends heavily on the last.
+
+But if capability increases, and the cost of exploring, testing, and iterating drops, does that assumption still hold?
+
+Could some of this work start to happen in parallel?
+
+Not without control, not without checks and balances but with the right guardrails in place, it feels like there’s an opportunity to compress time in a way that isn’t just about working faster, but about working differently.
+
+I’m not sure how far that goes yet, but it’s another example of the same pattern:
+
+the constraints we’ve designed around may not be the constraints we have anymore.
+
+## The experiment
+
+I’ve been testing some of this in my own small way. Forking Garry Tan’s gstack and adapting it to my own workflow.
+
+Nothing particularly polished. Just an experiment to see whether these systems can be shaped around how I actually work.
+
+Early signal:
+
+they can, and probably a lot more than that!
+
+Which again shifts the question. If the tools become flexible enough, the differentiation isn’t the tool.
+
+It’s how you use it.
+
+## Where this leaves me
+
+I don’t think this means interfaces disappear, or that traditional development suddenly becomes irrelevant.
+
+But I do think the centre of gravity is shifting.
+
+Away from:
+- the mechanics of building  
+- the friction of tools  
+
+And towards:
+- expertise  
+- judgement  
+- creativity  
+- how well ideas can be shaped and combined  
+
+Which is both exciting and slightly unsettling, because it’s less about what we can do. And more about what we choose to do with it.
