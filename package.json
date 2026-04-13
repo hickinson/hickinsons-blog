@@ -73,13 +73,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.4.0",
-    "react-rotating-text": "^1.4.1",
     "react-tooltip": "^5.21.5",
     "react-vega": "^7.6.0",
     "rehype-katex": "^6.0.3",
     "remark-gfm": "^3.0.1",
-    "remark-math": "^5.1.1",
-    "typeface-source-sans-pro": "^1.1.13"
+    "remark-math": "^5.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
