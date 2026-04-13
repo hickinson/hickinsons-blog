@@ -126,10 +126,18 @@ const config = {
         `,
         resolveSiteUrl: () => siteUrl,
         resolvePages: ({ allMdx: { edges: allMdxPages } }) => {
-          return allMdxPages.map(({ node }) => ({
+          const mdxPages = allMdxPages.map(({ node }) => ({
             path: node.fields.slug,
             frontmatter: node.frontmatter
           }));
+
+          return [
+            ...mdxPages,
+            {
+              path: "/quotes-links/",
+              frontmatter: {},
+            },
+          ];
         },
         serialize: ({ path, frontmatter }) => ({
           url: path,
