@@ -91,13 +91,6 @@ const config = {
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `definitions`,
-        path: `./src/definitions_markdown`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-page-creator`,
       options: {
         path: `./src/mdx/`,
