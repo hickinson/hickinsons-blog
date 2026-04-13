@@ -43,7 +43,6 @@ const config = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        lessBabel: false,
         mdxOptions: {
           remarkPlugins: [remarkGfm, remarkMath],
           rehypePlugins: [[rehypeKatex, { strict: 'ignore' }]],
