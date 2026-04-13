@@ -15,7 +15,7 @@ const getIsoDateOnly = (dateString) => {
 };
 
 const QuotesLinks = () => {
-  const [selectedTypes, setSelectedTypes] = useState(new Set(['Quote', 'Link']));
+  const [selectedTypes, setSelectedTypes] = useState(new Set(['Quote', 'Link', 'Podcast']));
   const [selectedTags, setSelectedTags] = useState(new Set());
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -30,7 +30,7 @@ const QuotesLinks = () => {
     if (typesParam) {
       setSelectedTypes(new Set(typesParam.split(',')));
     } else {
-      setSelectedTypes(new Set(['Quote', 'Link']));
+      setSelectedTypes(new Set(['Quote', 'Link', 'Podcast']));
     }
 
     if (tagsParam) {
@@ -51,7 +51,7 @@ const QuotesLinks = () => {
 
     const params = new URLSearchParams();
 
-    if (!(types.has('Quote') && types.has('Link'))) {
+    if (!(types.has('Quote') && types.has('Link') && types.has('Podcast'))) {
       if (types.size > 0) {
         params.set('types', Array.from(types).join(','));
       }
@@ -145,10 +145,11 @@ const QuotesLinks = () => {
       onDateClick: selectDate
     };
 
-    switch (node.frontmatter.type) {
+      switch (node.frontmatter.type) {
       case 'quote':
         return <QuoteCard {...cardProps} />;
       case 'link':
+      case 'podcast':
         return <LinkCard {...cardProps} />;
       default:
         return null;
@@ -174,7 +175,7 @@ const QuotesLinks = () => {
       <div className="mb-6 space-y-4">
         <div className="flex gap-2 items-center">
           <span className="text-sm font-medium text-gray-600 mr-2">Type:</span>
-          {['Quote', 'Link'].map(type => (
+          {['Quote', 'Link', 'Podcast'].map(type => (
             <button
               key={type}
               onClick={() => toggleType(type)}
