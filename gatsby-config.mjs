@@ -25,6 +25,20 @@ const config = {
   plugins: [
     "gatsby-plugin-postcss",
     `gatsby-plugin-sharp`,
+      {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `hickinsons.blog`,
+      short_name: `hickinsons`,
+      start_url: `/`,
+      background_color: `#faf8f3`,
+      theme_color: `#2f5d50`,
+      display: `minimal-ui`,
+      icon: `src/images/icon.png`,
+      include_favicon: true,
+      legacy: true,
+    },
+  },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-mdx`,
