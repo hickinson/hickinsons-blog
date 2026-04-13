@@ -43,7 +43,6 @@ const config = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        lessBabel: false,
         mdxOptions: {
           remarkPlugins: [remarkGfm, remarkMath],
           rehypePlugins: [[rehypeKatex, { strict: 'ignore' }]],
@@ -180,14 +179,14 @@ const config = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: "content",
+        name: "links_quotes",
         path: "./src/links_quotes_markdown/"
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: "content",
+        name: "microblog",
         path: "./src/microblog_md/"
       }
     },
