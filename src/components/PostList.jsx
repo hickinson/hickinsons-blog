@@ -30,15 +30,9 @@ const usePosts = () => {
     return data.allMdx.nodes;
 };
 
-const legacyCategoryMap = {
-    probabilistic_linkage: 'other',
-    energy: 'other',
-    quotes_links: 'notes',
-};
-
 const normaliseCategory = category => {
     if (!category) return 'other';
-    return legacyCategoryMap[category] || category;
+    return category;
 };
 
 const filterPosts = (posts, selectedCategory) => {
