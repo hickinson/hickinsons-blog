@@ -1,0 +1,205 @@
+---
+title: "When a Prototype Becomes a Service"
+post_date: "2026-05-01"
+post_category: "systems"
+description: "How organisations can enable useful experimentation without mistaking a working prototype for a supported service."
+---
+
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
+
+The request sounded straightforward.
+
+An application had been built internally. It worked. People could see value in it. Could our team host it and provide the technical support needed to keep it running?
+
+At first glance, this looked like a question about infrastructure.
+
+Where should it sit?  
+How should it be deployed?  
+What would it cost to run?
+
+But hosting was the least interesting part of the decision.
+
+The application already had users in mind, data moving through it, administrative functions and features that relied on artificial intelligence. It had been created by someone close enough to the problem to understand what people actually needed, and capable enough to turn that understanding into something tangible.
+
+That deserved respect.
+
+It was also the point at which a useful experiment was beginning to ask for something more consequential.
+
+Not simply somewhere to run, but permission for people to depend on it.
+
+## The value of people who build
+
+Most organisations say they want innovation.
+
+They want staff to be creative, identify problems and take initiative. They want people to make better use of technology rather than waiting for every answer to arrive through a formal programme or procurement exercise.
+
+Then somebody actually builds something.
+
+This is where the language often changes.
+
+The creative employee who solved a problem becomes the owner of an unsupported application. The useful prototype becomes a security concern. The thing people were excited to demonstrate becomes a list of questions about privacy, maintenance and technical debt.
+
+Some of that shift is unavoidable. A sketch and a service are not the same thing.
+
+But organisations can handle the transition badly. They can celebrate creativity while it remains hypothetical, then smother it with controls as soon as it produces anything real.
+
+I did not want that to happen here.
+
+The application existed because someone had been willing to experiment. They had worked close to the need, used the tools available and created something that might otherwise have remained a request on a backlog.
+
+Starting again through a conventional project route could have lost much of that energy. It might also have produced something more expensive, slower and less connected to the people using it.
+
+There was good reason to preserve what had been learned.
+
+There was also good reason not to pretend that usefulness made the other questions disappear.
+
+## What hides inside “can you support this?”
+
+Once a team agrees to support an application, it inherits more than the code.
+
+It inherits the phone call when somebody cannot log in.
+
+It inherits the outage that happens while the original developer is away.
+
+It inherits decisions about who can see which information, how long data should be kept and what happens when a supplier changes a service or a dependency stops working.
+
+It inherits the awkward question of what “support” actually means.
+
+Does it mean keeping the hosting platform available?
+
+Does it include fixing defects?
+
+Who decides which changes are made?
+
+Who understands the application well enough to diagnose a problem?
+
+Who owns the relationship with the users?
+
+Who is accountable if information is exposed, an automated response is inappropriate or the service becomes unavailable at an important moment?
+
+These are not objections invented by people who dislike innovation.
+
+They are the practical meaning of allowing others to rely on something.
+
+The difficulty was that our service was not geared up to receive an application like this and quietly turn it into a supported product. We had established processes for projects, changes, security, information governance and operational handover. We did not have a standing team waiting to adopt every useful application that someone elsewhere had been able to create.
+
+Saying yes without resolving that would not have been particularly innovative.
+
+It would simply have hidden the work.
+
+## Sometimes slowing down is the work
+
+My recommendation was that the existing processes should be followed.
+
+That can sound like the most predictable response a corporate technology function could offer. A prototype arrives full of energy and possibility; the answer is a process.
+
+I understand why that frustrates people.
+
+Processes can become defensive. They can accumulate long after the original reason for them has disappeared. They can require people to describe an uncertain idea as though every detail is already known. In the worst cases, the route intended to make innovation safe becomes so slow and expensive that nobody attempts anything ambitious.
+
+But not every pause is bureaucracy.
+
+Sometimes slowing down is how you discover whether everybody is agreeing to the same thing.
+
+A little time was needed to establish:
+
+- who owned the application;
+- what the technical team was actually being asked to support;
+- what responsibilities remained with the service;
+- what information the application processed;
+- which risks needed to be addressed before wider use;
+- and whether there was a sustainable route beyond the enthusiasm of its original creator.
+
+Without those answers, “we will support it” would have been a reassuring sentence with very little underneath it.
+
+That kind of ambiguity rarely causes trouble on the first day.
+
+It causes trouble six months later, when something fails and everyone remembers the original conversation differently.
+
+## Tinkering is not always innovation
+
+There was an uncomfortable mirror in this for my own service.
+
+We have a culture of tinkering too.
+
+Usually I value it. Technical people learn by trying things. They build small tools, test new services and automate irritating bits of work. Curiosity is one of the qualities I want in a team.
+
+But tinkering has a shadow side.
+
+A person solves a local problem, then another person begins using the solution. A temporary script becomes part of a business process. A proof of concept acquires a friendly interface and starts to look finished. Because it was inexpensive to create, nobody pauses to decide whether it should exist permanently.
+
+The result can be a growing collection of useful things that nobody has consciously chosen to own.
+
+Each one may save time in isolation. Together they create dependencies, support expectations and knowledge concentrated in the heads of a few enthusiastic people.
+
+I have sometimes encouraged exactly the conditions in which that happens.
+
+It is easy to tell teams to experiment. It is harder to define the point at which an experiment must either be adopted properly, remain deliberately limited or be allowed to end.
+
+Without that point, creativity can become accumulation.
+
+Not every clever solution needs to become a service. Not everything that can be built should be preserved. Sometimes the responsible outcome of an experiment is that it taught us enough to justify a different implementation. Sometimes the prototype itself is the right foundation, but only after more work. Sometimes it should remain small and explicitly unsupported.
+
+The mistake is allowing those outcomes to emerge accidentally.
+
+## Safety needs a route to yes
+
+The familiar argument presents innovation and governance as opponents.
+
+One side wants to move. The other wants to control.
+
+That is too convenient.
+
+Good governance should make movement safer. Good innovation should be interested in whether the thing being created can be trusted by the people it is intended to help.
+
+The organisation therefore needs more than a gate at the end of experimentation.
+
+It needs a route between the two states.
+
+People should be able to test ideas without satisfying every production standard before they know whether the idea is useful. There should be safe environments, accessible advice and clear limits around data and users. The early burden should be proportionate to the risk.
+
+But there should also be a visible threshold.
+
+When real users begin to depend on the application, when sensitive information enters it, or when an operational team is asked to guarantee its availability, the work has changed.
+
+At that point, ownership, support, privacy, security and continuity are no longer paperwork surrounding the product.
+
+They are part of the product.
+
+That threshold should not arrive as a surprise inspection by a distant corporate function. It should be understood from the beginning: experiment freely within these boundaries, and when the idea proves itself, here is how we will help it mature.
+
+We were not fully equipped to offer that route.
+
+Following the existing process was therefore the responsible answer, but it also exposed a gap. If we genuinely wanted more creativity across the organisation, we could not rely indefinitely on conventional project machinery to deal with every successful experiment.
+
+We needed to become better at the transition.
+
+## The space between making and maintaining
+
+The application had already achieved something important.
+
+It had made an idea visible.
+
+It had allowed people to respond to something real rather than debate a specification. It had demonstrated the value of someone close to a problem having enough agency to build.
+
+None of the questions that followed cancelled that achievement.
+
+They simply marked a change in what was being asked of it.
+
+A prototype is allowed to be temporary. It can depend on its creator, tolerate rough edges and leave some questions unanswered because its purpose is to help us learn.
+
+A service is different.
+
+A service makes a promise, even when nobody writes the promise down. People begin to trust that it will be there, that their information will be handled properly and that somebody will take responsibility when it does not work.
+
+The moment that promise begins to form, slowing down is not necessarily resistance.
+
+Sometimes it is the first honest recognition that making something was only the beginning.
