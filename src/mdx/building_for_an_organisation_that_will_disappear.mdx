@@ -1,0 +1,230 @@
+---
+title: "Building for an Organisation That Will Disappear"
+post_date: "2026-06-05"
+post_category: "systems"
+description: "What it means to build shared foundations for an organisation that must deliver now while preparing to be replaced by organisations that do not yet exist."
+---
+
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
+
+I had been asked to produce a future-state design for a shared data platform.
+
+This is the sort of responsibility I enjoy. It sits somewhere between technology, strategy and organisational design: broad enough to matter, but close enough to delivery that the answer eventually has to work.
+
+There was one complication.
+
+The organisation asking me to design the future was itself expected to disappear.
+
+Cambridgeshire County Council still existed. It still had services to run, reports to publish, systems to support and decisions to make. My team still had actual work to deliver. Residents were unlikely to accept local government reorganisation as a reason for something important to stop working.
+
+At the same time, the council was preparing to be replaced by new organisations.
+
+Those organisations might inherit what we were building. They might divide it, continue only parts of it or decide that an architecture designed within the old council did not suit the new ones at all.
+
+I was being asked to design the future while implementing some of its foundations in an organisation with a limited lifespan.
+
+The more I thought about it, the less it felt like a normal technology problem.
+
+## One phrase, two different things
+
+We had begun using the phrase **shared data platform**.
+
+It sounded reasonably clear until I realised we were not always using it to mean the same thing.
+
+One meaning was immediate and practical. We needed stronger foundations for the work already under way: modernising reporting, reducing reliance on ageing technology, improving how data moved between systems and creating something more manageable than a growing collection of local fixes.
+
+Reorganisation made that work more urgent. Information would eventually need to support migration, new organisational boundaries and decisions about how services might be divided or combined.
+
+A shared platform could help us do that.
+
+The second meaning was more ambitious. The same platform might become part of the permanent architecture of one or more future unitary councils. It might support shared services, common data products, regional analysis or a long-term operating model across organisational boundaries.
+
+Those possibilities were attractive. They were also not yet decisions.
+
+A platform built to help organisations move through transition is not automatically the right permanent platform for whatever emerges afterwards.
+
+The technology might look similar.
+
+The question being answered is different.
+
+## The present still has to work
+
+It would have been easy to let uncertainty become an excuse.
+
+Why improve the current environment if the organisation will cease to exist?
+
+Why make design decisions before the new boundaries are settled?
+
+Why invest in foundations that somebody else may later replace?
+
+Because the existing organisation remained responsible for the present.
+
+Reorganisation did not make unreliable reporting acceptable. It did not remove the need to secure data properly, reduce technical debt or make the current platform supportable.
+
+Nor would it have been responsible to leave successor organisations an estate of undocumented dependencies and ageing systems simply because nobody could yet draw the final organisational chart.
+
+Temporary does not mean disposable.
+
+An organisation approaching its end still owes its successors competent stewardship. In some ways the obligation becomes greater, because the people inheriting the estate may not possess the history that currently holds it together.
+
+They may not know why two apparently similar systems both exist, which strange workaround protects an essential process or which report quietly depends upon one person remembering to do something every Thursday.
+
+So the immediate work still mattered.
+
+Protect what people relied upon. Modernise the foundations. Make the environment safer, clearer and less dependent upon institutional memory.
+
+The fact that somebody might later change the design was not an argument for neglecting it now.
+
+## The lines on the diagram
+
+Architecture diagrams tend to look neutral.
+
+Boxes represent systems. Lines represent connections. Different colours suggest tidy categories of ownership and responsibility.
+
+But a line on a diagram can make one future easier and another more expensive.
+
+A common platform can reduce duplication and allow scarce skills to be shared. It can also determine where expertise, budget and decision-making begin to accumulate.
+
+A shared reporting model can create consistency. It can also make it harder for a future authority to define its own priorities.
+
+A common identity and access model can improve security. It can also leave several organisations dependent upon whichever one controls it.
+
+None of this makes shared infrastructure a disguised attempt at control.
+
+It does mean infrastructure distributes power, whether the architect intends it to or not.
+
+Once reports, integrations, data and teams depend upon a platform, moving away becomes harder. A temporary arrangement collects users, contracts and operational gravity. Eventually people stop asking whether it should become permanent and start asking how anything else could now be afforded.
+
+The design does not settle every political or organisational question.
+
+It can still quietly narrow the available answers.
+
+## My preference for order
+
+My instinct in these situations is to create coherence.
+
+I like understanding how the parts fit together. I like reducing needless duplication, defining standards and building things once where there is no meaningful value in building them several times.
+
+I have seen organisations solve the same problem repeatedly with different tools, terminology and assumptions. The result is rarely productive local freedom. More often it is fragile integration, inconsistent reporting and scarce staff maintaining several versions of the same plumbing.
+
+From that position, shared foundations can appear obviously sensible.
+
+Why should every council build its own analytical infrastructure?
+
+Why should each maintain a separate version of the same common capability?
+
+Why should local autonomy require technical duplication that residents cannot see and services do not value?
+
+They are reasonable questions.
+
+They are also questions asked from within the organisation that already had the most developed platform and much of the relevant technical capability.
+
+That matters.
+
+The architecture that looked most efficient from where I sat might also extend the influence of the current organisation, team or tenant.
+
+I might describe that as reuse.
+
+A future partner might experience it as dependence.
+
+I could see the waste in everybody building their own spine. I was less certain that I could always distinguish legitimate local choice from variation that merely offended my preference for order.
+
+## Shared spine, contested edge
+
+The phrase I kept returning to was a **shared spine with a contested edge**.
+
+Some things seemed well suited to common foundations: secure access, documented ownership, repeatable engineering patterns, reliable metadata and shared approaches to moving and protecting information.
+
+The sort of plumbing that allows different services and organisations to cooperate without each inventing an incompatible version of the same basic mechanism.
+
+The edge was harder.
+
+Who decided which data was authoritative?
+
+Who controlled priorities when several organisations depended upon the same platform?
+
+Which reports should be standardised, and which reflected genuine local difference?
+
+Did shared technical administration imply shared strategic control?
+
+At what point did a common platform become a common service—and a common service become an organisational centre?
+
+It is tempting to resolve this by saying the centre should control the foundations while the edges retain autonomy.
+
+That sounds sensible.
+
+It also postpones the argument.
+
+What counts as a foundation?
+
+To an architect, the platform may be plumbing. To a council responsible for its own services, budgets and political priorities, the organisation and governance of its data may be part of its independence.
+
+The boundary cannot be discovered by technology alone.
+
+It has to be negotiated.
+
+## The value of a real choice
+
+One quality of a good shared system may be that it does not make departure impossible.
+
+That sounds like a strange principle for cooperation. Surely the aim is to build something people want to remain part of, not design for the moment they leave.
+
+But there is a difference between choosing to stay because the arrangement works and staying because accumulated dependency has removed every practical alternative.
+
+This does not mean every component must be endlessly portable. Designing for every theoretical future would produce an expensive platform for nobody in particular.
+
+Decisions still have to be made. Systems need standards, owners and somewhere to run.
+
+The responsibility is to understand which decisions are needed now and which would settle matters that properly belong to the future organisations.
+
+Build the foundations confidently.
+
+Document the assumptions.
+
+Avoid unnecessary ties to the current organisational map.
+
+Keep important assets understandable.
+
+Make ownership visible.
+
+Do not present a political or operating-model decision as though it were merely a technical default.
+
+The aim is not an architecture without commitments.
+
+It is an architecture honest about the commitments it contains.
+
+## Building an inheritance
+
+There is something personally satisfying about being asked to shape work of this kind.
+
+It offers responsibility, influence and the chance to bring order to uncertainty.
+
+It also requires a different relationship with the result.
+
+I could not assume that the people inheriting the platform would preserve my choices. They might prefer a different operating model. They might divide something I believed should remain shared. They might replace technology that my team had worked hard to establish.
+
+That would not necessarily mean the work had failed.
+
+Architecture is often discussed as though success means permanence. Sometimes success means making later change possible without everything falling apart.
+
+At that stage I did not have one perfect target design. I had a more basic distinction.
+
+We needed to deliver the foundational work for the organisation that existed now.
+
+We also needed to avoid pretending that doing so gave us the right to decide every part of what came next.
+
+The future councils might continue the design.
+
+They might not.
+
+Perhaps the measure of the work was not whether they preserved it exactly as I drew it.
+
+Perhaps it was whether they inherited something understood, supportable and sufficiently well built that changing it remained a real choice.
