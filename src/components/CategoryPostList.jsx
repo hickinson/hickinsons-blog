@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import formatDisplayDate from '../utils/formatDisplayDate';
 
 const CategoryPostList = ({
     categoryKey,
@@ -45,7 +46,7 @@ const CategoryPostList = ({
                         >
                             <div className="flex flex-col gap-2">
                                 <p className="mb-0 text-[0.8rem] font-medium uppercase tracking-[0.08em] text-site-muted">
-                                    {post_date}
+                                    {formatDisplayDate(post_date)}
                                 </p>
 
                                 <h4 className="mb-0 text-[1.08rem] md:text-[1.18rem] font-semibold leading-[1.2] tracking-[-0.02em] text-site-text">
