@@ -1,4 +1,5 @@
 import React from 'react';
+import formatDisplayDate from '../utils/formatDisplayDate';
 
 const formatCategory = category => {
     if (!category || category === 'non_blog_post') return null;
@@ -64,7 +65,7 @@ const PostCodeLink = ({ frontmatter, children }) => {
             )}
 
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-site-muted">
-                {post_date && <span>{post_date}</span>}
+                {post_date && <span>{formatDisplayDate(post_date)}</span>}
                 {readingTime && <span>{readingTime}</span>}
                 {post_latest_update && <span>Updated {post_latest_update}</span>}
             </div>
