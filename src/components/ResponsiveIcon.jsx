@@ -5,6 +5,7 @@ const ResponsiveLink = ({ text, IconComponent, route }) => {
     return (
         <Link
             to={route}
+            aria-label={text}
             className="text-[0.98rem] font-medium text-site-muted no-underline transition-colors duration-200 hover:text-site-text"
         >
             <span className="hidden min-[501px]:inline">{text}</span>
