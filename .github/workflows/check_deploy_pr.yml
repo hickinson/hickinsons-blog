@@ -1,16 +1,42 @@
 name: Gatsby Check PR
 
 on:
-    pull_request:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gatsby-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: enriikke/gatsby-gh-pages-action@v2
-              with:
-                  access-token: ${{ secrets.ACCESS_TOKEN }}
-                  deploy-branch: master
-                  gatsby-args: --prefix-paths
-                  skip-publish: true
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Use repository Node version
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Show tool versions
+        run: |
+          node --version
+          npm --version
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Build Gatsby site
+        run: npm run build
+
+      - name: Confirm tracked files are unchanged
+        run: git diff --exit-code
