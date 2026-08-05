@@ -1,0 +1,373 @@
+---
+title: "The Barriers Are Falling. The Hard Yards Remain."
+post_date: "2026-06-19"
+first_published: "2026-08-05"
+retrospective: true
+post_category: "building"
+description: "What my brother building his own website with AI taught me about technical access, learning things in the wrong order and the persistence still required to make something real."
+---
+
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
+
+My brother is a talented artist and a self-taught UX professional.
+
+He understands people, design and how an experience should feel. He has also spent enough time around cryptocurrency and blockchain to be comfortable exploring unfamiliar ideas.
+
+What he is not is a developer.
+
+He did not begin with a background in software engineering, infrastructure or version control. Git was not an established part of his professional vocabulary. GitHub was something he needed to use before he properly understood the foundational system beneath it.
+
+Then he decided to build [dadbot.blog](https://dadbot.blog/).
+
+Not merely to sketch it, describe it or hand a design to somebody else.
+
+To build it, publish it and make it work.
+
+He used AI for almost everything.
+
+Along the way he began learning about tokenomics, development practices, repositories, deployment and the many other things that appear once an idea has to survive outside your own head.
+
+He failed.
+
+He restarted.
+
+He became confused.
+
+Then he kept going.
+
+## An hour of GitHub
+
+One Sunday evening, we had one of our regular catch-ups.
+
+We spent almost the entire hour fumbling around GitHub.
+
+I was trying to explain what was happening, although explaining GitHub without first explaining Git is more difficult than it sounds. To understand why a repository behaves in a particular way, it helps to understand version control. To understand version control, it helps to understand the problem it was designed to solve.
+
+My brother had none of that foundation.
+
+He was trying to use the visible tool without yet possessing the conceptual model underneath it.
+
+Branches, commits, repositories and changes all make more sense once you understand the relationships between them. Without that, GitHub can look like a collection of buttons whose consequences are revealed only after you press them.
+
+We went around in circles.
+
+I tried different explanations. We clicked things. We worked backwards. Some of what I said probably helped. Some of it probably added another layer of terminology to a problem that already contained enough terminology.
+
+It was not a triumphant evening of technical mentorship.
+
+We fumbled through it.
+
+But he did not give up.
+
+That is the part I remember most clearly.
+
+## Then it went quiet
+
+After that conversation, things became quiet for a few weeks.
+
+We missed some of our catch-ups. I did not know whether the project had stalled, been abandoned or simply been overtaken by the rest of life.
+
+That is where many projects end.
+
+The initial enthusiasm carries somebody through the idea, the first experiments and the moment when something begins to appear on the screen.
+
+Then the work becomes less exciting.
+
+A configuration refuses to behave. One change breaks something else. The terminology multiplies. The promised shortcut leads to another tool that also needs to be understood.
+
+The project stops providing the quick reward that made starting feel so satisfying.
+
+Silence follows.
+
+Then, unexpectedly, a WhatsApp message arrived.
+
+Could I test the site and give him some feedback?
+
+He had built it.
+
+Not perfectly. Not finally. Not without help.
+
+But it existed.
+
+The site had moved from an intention to something another person could open, use and respond to.
+
+Whatever had happened during those quiet weeks, he had kept going.
+
+## Learning in the wrong order
+
+His route into development would probably look backwards to somebody trained in software engineering.
+
+Traditionally, you might begin with foundational ideas.
+
+You learn how files and directories work. You learn some programming. You understand source control. You use Git locally. You learn what a commit represents before working with branches, pull requests and remote repositories.
+
+Concepts build upon concepts.
+
+My brother encountered many of these things in the opposite order.
+
+He needed GitHub because the project required it.
+
+He encountered version control because GitHub exposed it.
+
+He began learning the underlying concepts after he was already using the tools built upon them.
+
+That raises an interesting question.
+
+Is that bad?
+
+There are obvious risks.
+
+A person who does not understand version control may not recognise what is being saved, what can be recovered or which action might overwrite something important. They may follow instructions without understanding the consequences. They may become dependent upon AI-generated steps that are plausible but wrong.
+
+Foundational knowledge provides a model against which advice can be tested.
+
+It helps somebody recognise when a tool is behaving unexpectedly. It makes debugging less like trying random keys in an unfamiliar lock.
+
+But I am less certain that everybody needs to acquire that knowledge before they begin.
+
+Perhaps doing things in the “wrong” order is sometimes how genuine learning now starts.
+
+The need creates the question.
+
+The problem makes the explanation relevant.
+
+The concept arrives after the experience that gives it meaning.
+
+My brother did not study version control because somebody told him it was an important professional competency. He encountered it because he was trying to make something real.
+
+That does not necessarily produce complete understanding.
+
+It does produce a reason to keep learning.
+
+## Cognitive debt
+
+At a public lecture by [Dr Tom Chatfield](https://youtu.be/LsvUoM6wKY8?si=llJNQ6BR_sehUzP5), I first encountered the term **cognitive debt**.
+
+The phrase itself was coined by [John V Willshire](https://smithery.com/methods/cognitive-debt/). It describes what happens when we obtain an answer without doing—or understanding—the thinking that produced it.
+
+The comparison with technical debt is useful.
+
+In software development, taking a shortcut is not always wrong. Sometimes an imperfect solution allows something valuable to be tested sooner. The problem comes when the shortcut is forgotten, misunderstood or allowed to become a permanent foundation.
+
+Cognitive debt works in a similar way.
+
+An AI system can tell somebody which command to run, which setting to change or which file to edit. The immediate problem may disappear.
+
+But the person may still not understand:
+
+- what the command did;
+- why the setting mattered;
+- how the files relate to one another;
+- what assumptions sit beneath the answer;
+- what to do when the same instruction does not work next time.
+
+The outcome has arrived before the understanding.
+
+My brother was undoubtedly accumulating some cognitive debt as he built.
+
+He was using GitHub before understanding Git. He was making development decisions before possessing a conventional model of development practice. He was accepting help whose technical quality he could not always independently assess.
+
+That debt was real.
+
+But it was not the whole story.
+
+The project also created a reason to repay it.
+
+Once something was broken, the underlying concept mattered. Once a mistake threatened work he cared about, version control stopped being abstract. Once he needed to recover, revise or deploy, the vocabulary acquired a purpose.
+
+The shortcut created exposure to the deeper problem.
+
+That is different from using AI to avoid learning altogether.
+
+## AI as a route into the work
+
+This is where AI changes the entry point.
+
+It can help somebody begin before they possess the full technical vocabulary of the thing they are attempting.
+
+It can explain an error message.
+
+It can suggest a next step.
+
+It can generate a first version of code, translate unfamiliar terminology and respond to the question that exists at that precise moment.
+
+It does not become impatient when the follow-up question reveals that the first explanation assumed too much.
+
+That matters.
+
+Traditional technical learning often requires a beginner to absorb considerable context before reaching the thing they originally wanted to do.
+
+There are good reasons for that. Foundations matter.
+
+But it also means that many people never reach the point where their idea becomes visible enough to reward the effort.
+
+AI can shorten that distance.
+
+My brother did not need to become a developer before he was allowed to start building. He could begin with the idea, encounter problems and acquire knowledge as the work demanded it.
+
+That is a meaningful shift in access.
+
+It does not mean the expertise of developers no longer matters.
+
+It means the gates around the first attempt are becoming easier to open.
+
+## The hard yards did not disappear
+
+It would be easy to describe the site as something AI built.
+
+That would miss the important part.
+
+AI did not care whether the project survived.
+
+It did not maintain the purpose across weeks of interruption. It did not decide that the failures were worth returning to. It did not feel responsible for turning the idea into something another person could use.
+
+My brother did those things.
+
+He had to decide what he was trying to make.
+
+He had to judge suggestions he was not always equipped to evaluate.
+
+He had to restart when the path he had followed stopped working.
+
+He had to keep enough of the project in his head to continue after the novelty faded.
+
+He had to tolerate not knowing.
+
+AI made help more accessible.
+
+It did not supply persistence.
+
+This is the distinction that gets lost in arguments about whether AI makes things easy.
+
+Some tasks may become dramatically easier. That is not the same as saying that producing something worthwhile becomes effortless.
+
+Lowering the technical barrier exposes the next barriers:
+
+- uncertainty;
+- judgement;
+- consistency;
+- taste;
+- responsibility;
+- the willingness to continue when the instructions do not work.
+
+The hard yards move.
+
+They do not disappear.
+
+## Does the debt matter if the thing works?
+
+There is an uncomfortable argument lurking here.
+
+If my brother can build and publish the thing he intended to make, does it matter whether he understands Git?
+
+Does he need to know the history and principles of version control, or does he simply need a safe enough way of managing changes?
+
+How much foundational understanding is necessary when increasingly capable tools can handle the detail?
+
+I do not think the answer is either everything or nothing.
+
+Understanding matters when the consequences matter.
+
+It matters when work needs to be recovered, secured, maintained or trusted by other people. It matters when somebody must distinguish between a harmless shortcut and a dangerous one. It matters when an AI confidently recommends something that should not be done.
+
+But we should also be careful not to turn our own learning route into an entrance examination.
+
+Some of the knowledge experienced practitioners regard as foundational may become less central as tools change. Other concepts will remain important even when the interfaces conceal them.
+
+The challenge is deciding which is which.
+
+Cognitive debt should not become another reason to keep newcomers outside.
+
+Debt is not always evidence of irresponsibility. It can be a deliberate exchange: accepting incomplete understanding now in order to gain the experience that makes deeper understanding possible later.
+
+The danger is not owing the debt.
+
+It is forgetting that it exists.
+
+## Is not knowing an advantage?
+
+There may even be advantages to arriving without the conventional foundations.
+
+People who know how things have traditionally been done can mistake familiarity for necessity.
+
+We inherit assumptions about the correct sequence, the proper tooling and the amount somebody ought to understand before being allowed near production.
+
+Many of those assumptions exist for good reasons.
+
+Some are simply the shape taken by the route we followed.
+
+A beginner may ask why a process needs to be so complicated. Sometimes the answer will be that the complexity protects something important.
+
+Sometimes there will be no particularly good answer.
+
+Not knowing the established method can produce mistakes. It can also reveal unnecessary ceremony.
+
+The challenge is distinguishing between the two.
+
+My brother’s lack of technical background did not automatically make him more innovative. Nor did my greater familiarity with development concepts automatically make my judgement better.
+
+We each saw different parts of the problem.
+
+I could recognise some of the underlying structures. He remained closer to the experience of the person trying to make the product useful.
+
+That combination felt valuable.
+
+His design and UX experience did not disappear because he was working with code. It shaped what he noticed and what he cared about.
+
+AI did not turn a non-technical person into an imitation developer.
+
+It helped a designer and artist extend his existing abilities into a space that had previously been harder to enter.
+
+## Access is only the beginning
+
+There is a temptation to describe AI as democratising technology.
+
+There is truth in that, but the word can carry too much.
+
+Not everybody has equal time, confidence, equipment or freedom to experiment. AI tools are not equally affordable or accessible. Their answers can be wrong. Their interfaces can make complicated work look safer than it is.
+
+Removing one barrier does not remove every barrier.
+
+But something important is happening.
+
+People with ideas are becoming less dependent upon somebody else granting them access to the means of testing those ideas.
+
+A person can begin building before they have the conventional credentials.
+
+They can learn in public, through the work, in an order that would once have appeared improper.
+
+Some will stop when the first excitement passes.
+
+Others will keep returning.
+
+That difference still matters.
+
+When my brother sent me the link and asked me to test what he had made, I felt proud.
+
+Not because the technology had worked flawlessly.
+
+Not because AI had produced something on his behalf.
+
+I was proud because I had seen enough of the confusion to understand what stood between the initial idea and that message.
+
+He had persisted towards a cause.
+
+I have always admired that, regardless of the cause.
+
+The barriers are falling.
+
+That creates opportunities for people who might once have remained outside the work.
+
+But opportunity still needs somebody willing to cross the threshold, become confused, start again and keep going after everyone else assumes the project has quietly ended.
+
+The tools are becoming easier to access.
+
+The persistence remains entirely human.
