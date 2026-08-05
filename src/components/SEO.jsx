@@ -1,5 +1,8 @@
 import React from 'react';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
+import publicationMetadataModule from '../data/publicationMetadata.cjs';
+
+const { getPublicationMetadata } = publicationMetadataModule;
 
 const makeAbsoluteUrl = (siteUrl, value) => {
     if (!value) return siteUrl;
@@ -31,6 +34,11 @@ export const SEO = ({ frontmatter = {}, pathname = '' }) => {
         frontmatter.post_category !== 'non_blog_post' &&
         !!frontmatter.title;
 
+    const publication = getPublicationMetadata({
+        slug: pathname,
+        frontmatter,
+    });
+
     const robots = frontmatter.noindex ? 'noindex,nofollow' : 'index,follow';
 
     return (
@@ -50,10 +58,10 @@ export const SEO = ({ frontmatter = {}, pathname = '' }) => {
             <meta property="og:url" content={url} />
             <meta property="og:type" content={isArticle ? 'article' : 'website'} />
 
-            {isArticle && frontmatter.post_date && (
+            {isArticle && publication.firstPublished && (
                 <meta
                     property="article:published_time"
-                    content={frontmatter.post_date}
+                    content={publication.firstPublished}
                 />
             )}
 

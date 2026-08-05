@@ -20,6 +20,8 @@ const usePosts = () => {
                         title
                         description
                         post_date(formatString: "DD MMMM YYYY")
+                        first_published(formatString: "YYYY-MM-DD")
+                        retrospective
                         post_category
                     }
                 }

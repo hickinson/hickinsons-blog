@@ -13,14 +13,18 @@ const components = {
     h3: props => <AnchorHeader tag="h3" {...props} />,
 };
 
+const getSlug = pageContext =>
+    pageContext?.fields?.slug || pageContext?.slug || '';
+
 export function MDXLayout({ children, pageContext }) {
     const { frontmatter } = pageContext;
+    const slug = getSlug(pageContext);
 
     return (
         <Layout>
             <div className="mx-auto max-w-reading py-8 md:py-12">
                 <MDXProvider components={components}>
-                    <PostInfo frontmatter={frontmatter}>
+                    <PostInfo frontmatter={frontmatter} slug={slug}>
                         {children}
                     </PostInfo>
 
@@ -39,12 +43,13 @@ export function MDXLayout({ children, pageContext }) {
 
 export function MDXLayoutWide({ children, pageContext }) {
     const { frontmatter } = pageContext;
+    const slug = getSlug(pageContext);
 
     return (
         <Layout className="mx-auto w-full max-w-screen-xl px-5 sm:px-6 lg:px-8">
             <MDXProvider components={components}>
                 <div className="mx-auto max-w-reading py-8 md:py-12">
-                    <PostInfo frontmatter={frontmatter}>
+                    <PostInfo frontmatter={frontmatter} slug={slug}>
                         {children}
                     </PostInfo>
 
@@ -59,12 +64,13 @@ export function MDXLayoutWide({ children, pageContext }) {
 
 export function MDXLayoutFull({ children, pageContext }) {
     const { frontmatter } = pageContext;
+    const slug = getSlug(pageContext);
 
     return (
         <Layout className="w-full px-4">
             <MDXProvider components={components}>
                 <div className="mx-auto max-w-reading py-8 md:py-12">
-                    <PostInfo frontmatter={frontmatter}>
+                    <PostInfo frontmatter={frontmatter} slug={slug}>
                         {children}
                     </PostInfo>
 
