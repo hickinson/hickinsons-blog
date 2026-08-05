@@ -2,10 +2,12 @@ import { env } from 'process';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import publicationMetadataModule from './src/data/publicationMetadata.cjs';
 
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
 
+const { getPublicationMetadata } = publicationMetadataModule;
 const siteUrl = env.URL || `https://hickinsons.blog`;
 
 const config = {
@@ -107,6 +109,8 @@ const config = {
                 frontmatter {
                   title
                   post_date
+                  first_published
+                  retrospective
                   description
                 }
                 fields {
@@ -132,10 +136,17 @@ const config = {
             },
           ];
         },
-        serialize: ({ path, frontmatter }) => ({
-          url: path,
-          lastmod: frontmatter.post_date,
-        }),
+        serialize: ({ path, frontmatter }) => {
+          const publication = getPublicationMetadata({
+            slug: path,
+            frontmatter,
+          });
+
+          return {
+            url: path,
+            lastmod: publication.firstPublished || frontmatter.post_date,
+          };
+        },
       },
     },
     {
@@ -146,13 +157,21 @@ const config = {
             serialize: ({ query: { site, allMdx } }) => {
               return allMdx.nodes
                 .filter(node => node.frontmatter.post_category !== "non_blog_post")
-                .map(node => ({
-                  title: node.frontmatter.title,
-                  description: node.frontmatter.description,
-                  date: node.frontmatter.post_date,
-                  url: `${site.siteMetadata.siteUrl}${node.fields.slug}`,
-                  guid: `${site.siteMetadata.siteUrl}${node.fields.slug}`,
-                }));
+                .map(node => {
+                  const publication = getPublicationMetadata({
+                    slug: node.fields.slug,
+                    frontmatter: node.frontmatter,
+                  });
+
+                  return {
+                    title: node.frontmatter.title,
+                    description: node.frontmatter.description,
+                    date: publication.firstPublished,
+                    url: `${site.siteMetadata.siteUrl}${node.fields.slug}`,
+                    guid: `${site.siteMetadata.siteUrl}${node.fields.slug}`,
+                  };
+                })
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
             },
             query: `
             {
@@ -165,6 +184,8 @@ const config = {
                     title
                     description
                     post_date
+                    first_published
+                    retrospective
                     post_category
                   }
                 }

@@ -1,5 +1,8 @@
 import React from 'react';
 import formatDisplayDate from '../utils/formatDisplayDate';
+import publicationMetadataModule from '../data/publicationMetadata.cjs';
+
+const { getPublicationMetadata } = publicationMetadataModule;
 
 const formatCategory = category => {
     if (!category || category === 'non_blog_post') return null;
@@ -28,7 +31,7 @@ const estimateReadingTime = text => {
     return `${minutes} min read`;
 };
 
-const PostCodeLink = ({ frontmatter, children }) => {
+const PostCodeLink = ({ frontmatter, children, slug }) => {
     if (!frontmatter) return null;
 
     const {
@@ -40,6 +43,7 @@ const PostCodeLink = ({ frontmatter, children }) => {
     } = frontmatter;
 
     const categoryLabel = formatCategory(post_category);
+    const publication = getPublicationMetadata({ slug, frontmatter });
 
     const childText =
         typeof children === 'string'
@@ -69,6 +73,19 @@ const PostCodeLink = ({ frontmatter, children }) => {
                 {readingTime && <span>{readingTime}</span>}
                 {post_latest_update && <span>Updated {post_latest_update}</span>}
             </div>
+
+            {publication.retrospective && post_date && (
+                <p className="mt-4 mb-0 max-w-reading text-sm leading-6 text-site-muted">
+                    Written retrospectively and placed in the sequence for{' '}
+                    {formatDisplayDate(post_date)}.
+                    {publication.firstPublished && (
+                        <>
+                            {' '}First published{' '}
+                            {formatDisplayDate(publication.firstPublished)}.
+                        </>
+                    )}
+                </p>
+            )}
 
             {code_url && (
                 <p className="mt-5 mb-0 text-sm leading-7 text-site-muted">
