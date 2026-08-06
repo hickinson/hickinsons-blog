@@ -7,6 +7,16 @@ post_category: "building"
 description: "What drawing a masterplan for our home taught me about sequencing ambition, preserving options and leaving room for a future that may change."
 ---
 
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
+
 The plan became crowded remarkably quickly.
 
 What began as a conversation about where a few things might go expanded into gates, planting, paths, storage, an orchard, outdoor seating, an extension and, eventually, a swimming pool.
