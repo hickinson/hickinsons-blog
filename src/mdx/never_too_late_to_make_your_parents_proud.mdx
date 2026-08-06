@@ -9,6 +9,7 @@ description: "What graduating with a first in the middle of an established life 
 
 export { MDXLayout as default } from '../components/MDXLayout';
 import { SEO } from "../components/SEO"
+import graduationPhoto from '../images/graduation_with_parents.svg';
 
 export const Head = (props) => (
   <SEO
@@ -17,7 +18,10 @@ export const Head = (props) => (
   />
 );
 
-![Phil with his parents at his Anglia Ruskin University graduation](../images/graduation_with_parents.svg)
+<img
+  src={graduationPhoto}
+  alt="Phil with his parents at his Anglia Ruskin University graduation"
+/>
 
 The ceremony was formal and warm.
 
