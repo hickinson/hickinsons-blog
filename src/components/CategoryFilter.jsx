@@ -3,14 +3,10 @@ import React from 'react';
 const formatCategoryLabel = category => {
     const labels = {
         all: 'All',
-        data: 'Data',
-        leadership: 'Leadership',
-        systems: 'Systems',
-        building: 'Building',
-        projects: 'Projects',
+        work: 'Work',
+        technology: 'Technology',
+        ideas: 'Ideas',
         life: 'Life',
-        notes: 'Notes',
-        other: 'Other',
     };
 
     return labels[category] || category;

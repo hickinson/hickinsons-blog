@@ -32,71 +32,28 @@ const usePosts = () => {
     return data.allMdx.nodes;
 };
 
-const normaliseCategory = category => {
-    if (!category) return 'other';
-    return category;
+const categoryOrder = ['work', 'technology', 'ideas', 'life'];
+
+const categoryTitles = {
+    work: 'Work',
+    technology: 'Technology',
+    ideas: 'Ideas',
+    life: 'Life',
+};
+
+const categoryDescriptions = {
+    work: 'Organisations, leadership, public service and change.',
+    technology: 'AI, software, platforms, architecture and technical capability.',
+    ideas: 'Books, writing, society, philosophy and thinking.',
+    life: 'Family, home, sport, identity and lived experience.',
 };
 
 const filterPosts = (posts, selectedCategory) => {
     if (selectedCategory === 'all') return posts;
 
     return posts.filter(
-        post => normaliseCategory(post.frontmatter.post_category) === selectedCategory
+        post => post.frontmatter.post_category === selectedCategory
     );
-};
-
-const groupPostsByCategory = (posts, includeLatest = false) => {
-    let categorizedPosts = posts.reduce((acc, node) => {
-        const category = normaliseCategory(node.frontmatter.post_category);
-        if (!acc[category]) acc[category] = [];
-        acc[category].push(node);
-        return acc;
-    }, {});
-
-    if (includeLatest) {
-        categorizedPosts = {
-            latest: posts.slice(0, 3),
-            ...categorizedPosts,
-        };
-    }
-
-    return categorizedPosts;
-};
-
-const headerOrder = [
-    'latest',
-    'data',
-    'leadership',
-    'systems',
-    'building',
-    'projects',
-    'life',
-    'notes',
-    'other',
-];
-
-const categoryTitles = {
-    latest: 'Start here',
-    data: 'Data and digital transformation',
-    leadership: 'Leadership and organisational culture',
-    systems: 'Systems and architecture',
-    building: 'Building things',
-    projects: 'Projects',
-    life: 'Life and discipline',
-    notes: 'Notes and references',
-    other: 'Other writing',
-};
-
-const categoryDescriptions = {
-    latest: 'A few recent pieces to begin with.',
-    data: 'Writing on data platforms, analytics and transformation.',
-    leadership: 'Leadership, organisational culture and change.',
-    systems: 'Architecture, engineering thinking and systems design.',
-    building: 'Thoughts on creating products, making, and experimentation.',
-    projects: 'Updates and reflections on projects being built.',
-    life: 'Reflections on discipline, philosophy and personal growth.',
-    notes: 'Shorter ideas, references, links and collected thoughts.',
-    other: 'Writing that sits outside the main themes.',
 };
 
 const PostList = () => {
@@ -105,23 +62,22 @@ const PostList = () => {
 
     const availableCategories = useMemo(() => {
         const found = new Set(
-            allPosts.map(post => normaliseCategory(post.frontmatter.post_category))
+            allPosts.map(post => post.frontmatter.post_category)
         );
 
-        return headerOrder.filter(
-            category => category !== 'latest' && found.has(category)
-        );
+        return categoryOrder.filter(category => found.has(category));
     }, [allPosts]);
 
     const filteredPosts = useMemo(() => {
         return filterPosts(allPosts, selectedCategory);
     }, [allPosts, selectedCategory]);
 
-    const includeLatest = selectedCategory === 'all';
-
-    const postsByCategory = useMemo(() => {
-        return groupPostsByCategory(filteredPosts, includeLatest);
-    }, [filteredPosts, includeLatest]);
+    const title = selectedCategory === 'all'
+        ? 'Latest writing'
+        : categoryTitles[selectedCategory];
+    const description = selectedCategory === 'all'
+        ? 'Essays, notes and working thoughts, newest first.'
+        : categoryDescriptions[selectedCategory];
 
     return (
         <div className="space-y-10 md:space-y-12">
@@ -132,7 +88,7 @@ const PostList = () => {
                             Browse
                         </p>
                         <p className="mb-0 text-sm leading-6 text-site-muted">
-                            Filter posts by theme, or explore everything.
+                            Read chronologically, or filter by broad theme.
                         </p>
                     </div>
 
@@ -144,23 +100,12 @@ const PostList = () => {
                 </div>
             </div>
 
-            <div className="space-y-12 md:space-y-14">
-                {headerOrder.map(categoryKey => {
-                    const posts = postsByCategory[categoryKey];
-
-                    if (!posts || posts.length === 0) return null;
-
-                    return (
-                        <CategoryPostList
-                            key={categoryKey}
-                            categoryKey={categoryKey}
-                            posts={posts}
-                            categoryTitles={categoryTitles}
-                            categoryDescriptions={categoryDescriptions}
-                        />
-                    );
-                })}
-            </div>
+            <CategoryPostList
+                eyebrow={selectedCategory === 'all' ? 'Journal' : 'Category'}
+                title={title}
+                description={description}
+                posts={filteredPosts}
+            />
         </div>
     );
 };

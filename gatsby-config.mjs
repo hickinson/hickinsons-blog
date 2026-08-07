@@ -19,7 +19,7 @@ const config = {
   },
   siteMetadata: {
     title: `hickinsons.blog`,
-    description: `A blog about data and digital transformation, leadership, systems, building, projects, life, and making sense of a noisy world.`,
+    description: `An essay-led journal about thinking clearly, building useful things, understanding systems, and becoming more capable in a changing world.`,
     siteUrl,
     twitterUsername: `@hickinsons`,
     image: `/og-default.png`,
@@ -131,7 +131,7 @@ const config = {
           return [
             ...mdxPages,
             {
-              path: "/quotes-links/",
+              path: "/commonplace/",
               frontmatter: {},
             },
           ];
@@ -193,7 +193,7 @@ const config = {
             }
             `,
             output: "/rss.xml",
-            title: "hickinsons.blog | Writing on data, leadership, systems and building",
+            title: "hickinsons.blog | Work, technology, ideas and life",
           },
         ],
       }

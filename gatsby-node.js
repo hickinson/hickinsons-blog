@@ -11,6 +11,17 @@ exports.createSchemaCustomization = ({ actions }) => {
     `);
 };
 
+exports.createPages = ({ actions }) => {
+    const { createRedirect } = actions;
+
+    createRedirect({
+        fromPath: '/quotes-links/',
+        toPath: '/commonplace/',
+        isPermanent: true,
+        redirectInBrowser: true,
+    });
+};
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
 
