@@ -6,6 +6,7 @@ import {
     FaLinkedin,
     FaHome,
     FaInfoCircle,
+    FaBookOpen,
 } from 'react-icons/fa';
 
 import ResponsiveLink from './ResponsiveIcon';
@@ -34,6 +35,11 @@ const Header = () => {
                         text="Home"
                         IconComponent={FaHome}
                         route="/"
+                    />
+                    <ResponsiveLink
+                        text="Commonplace"
+                        IconComponent={FaBookOpen}
+                        route="/commonplace/"
                     />
                     <ResponsiveLink
                         text="About"

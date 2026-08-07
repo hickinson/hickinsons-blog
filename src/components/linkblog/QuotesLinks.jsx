@@ -1,21 +1,17 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { navigate } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import QuoteCard from './QuoteCard';
 import LinkCard from './LinkCard';
 
-const getIsoDateOnly = (dateString) => {
+const contentTypes = ['Quote', 'Link', 'Podcast'];
+
+const getIsoDateOnly = dateString => {
   if (!dateString) return null;
-  try {
-    return dateString.substring(0, 10);
-  } catch (e) {
-    console.error("Error parsing date:", dateString, e);
-    return null;
-  }
+  return dateString.substring(0, 10);
 };
 
 const QuotesLinks = () => {
-  const [selectedTypes, setSelectedTypes] = useState(new Set(['Quote', 'Link', 'Podcast']));
+  const [selectedTypes, setSelectedTypes] = useState(new Set(contentTypes));
   const [selectedTags, setSelectedTags] = useState(new Set());
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -27,23 +23,15 @@ const QuotesLinks = () => {
     const tagsParam = params.get('tags');
     const dateParam = params.get('date');
 
-    if (typesParam) {
-      setSelectedTypes(new Set(typesParam.split(',')));
-    } else {
-      setSelectedTypes(new Set(['Quote', 'Link', 'Podcast']));
-    }
-
-    if (tagsParam) {
-      setSelectedTags(new Set(tagsParam.split(',')));
-    } else {
-      setSelectedTags(new Set());
-    }
-
-    if (dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam)) {
-      setSelectedDate(dateParam);
-    } else {
-      setSelectedDate(null);
-    }
+    setSelectedTypes(
+      typesParam ? new Set(typesParam.split(',')) : new Set(contentTypes)
+    );
+    setSelectedTags(
+      tagsParam ? new Set(tagsParam.split(',')) : new Set()
+    );
+    setSelectedDate(
+      dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam) ? dateParam : null
+    );
   }, []);
 
   const updateURL = (types, tags, date) => {
@@ -51,19 +39,12 @@ const QuotesLinks = () => {
 
     const params = new URLSearchParams();
 
-    if (!(types.has('Quote') && types.has('Link') && types.has('Podcast'))) {
-      if (types.size > 0) {
-        params.set('types', Array.from(types).join(','));
-      }
+    if (!(contentTypes.every(type => types.has(type)))) {
+      if (types.size > 0) params.set('types', Array.from(types).join(','));
     }
 
-    if (tags.size > 0) {
-      params.set('tags', Array.from(tags).join(','));
-    }
-
-    if (date) {
-      params.set('date', date);
-    }
+    if (tags.size > 0) params.set('tags', Array.from(tags).join(','));
+    if (date) params.set('date', date);
 
     const search = params.toString();
     navigate(
@@ -96,142 +77,132 @@ const QuotesLinks = () => {
   const allTags = useMemo(() => {
     const tags = new Set();
     data.allMarkdownRemark.nodes.forEach(node => {
-      if (node.frontmatter.tags) {
-        node.frontmatter.tags.forEach(tag => tags.add(tag));
-      }
+      node.frontmatter.tags?.forEach(tag => tags.add(tag));
     });
     return Array.from(tags).sort();
   }, [data]);
 
-  const toggleType = (type) => {
-    setSelectedTypes(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(type)) {
-        newSet.delete(type);
-      } else {
-        newSet.add(type);
-      }
-      if (newSet.size === 0) {
-        newSet.add(type);
-      }
-      updateURL(newSet, selectedTags, selectedDate);
-      return newSet;
+  const toggleType = type => {
+    setSelectedTypes(previous => {
+      const next = new Set(previous);
+      if (next.has(type)) next.delete(type);
+      else next.add(type);
+      if (next.size === 0) next.add(type);
+      updateURL(next, selectedTags, selectedDate);
+      return next;
     });
   };
 
-  const toggleTag = (tag) => {
-    setSelectedTags(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(tag)) {
-        newSet.delete(tag);
-      } else {
-        newSet.add(tag);
-      }
-      updateURL(selectedTypes, newSet, selectedDate);
-      return newSet;
+  const toggleTag = tag => {
+    setSelectedTags(previous => {
+      const next = new Set(previous);
+      if (next.has(tag)) next.delete(tag);
+      else next.add(tag);
+      updateURL(selectedTypes, next, selectedDate);
+      return next;
     });
   };
 
-  const selectDate = (date) => {
-    const newDate = date ? getIsoDateOnly(date) : null;
-    setSelectedDate(newDate);
-    updateURL(selectedTypes, selectedTags, newDate);
-  };
-
-  const renderContent = (node) => {
-    const cardProps = {
-      frontmatter: node.frontmatter,
-      html: node.html,
-      onDateClick: selectDate
-    };
-
-    switch (node.frontmatter.type) {
-      case 'quote':
-        return <QuoteCard {...cardProps} />;
-      case 'link':
-      case 'podcast':
-        return <LinkCard {...cardProps} />;
-      default:
-        return null;
-    }
+  const selectDate = date => {
+    const nextDate = date ? getIsoDateOnly(date) : null;
+    setSelectedDate(nextDate);
+    updateURL(selectedTypes, selectedTags, nextDate);
   };
 
   const filteredNodes = data.allMarkdownRemark.nodes.filter(node => {
-    if (!node.frontmatter || !node.frontmatter.type) return false;
+    if (!node.frontmatter?.type) return false;
 
-    const typeMatches = selectedTypes.has(node.frontmatter.type.charAt(0).toUpperCase() + node.frontmatter.type.slice(1));
-
-    const tagMatches = selectedTags.size === 0 ||
-      (node.frontmatter.tags && node.frontmatter.tags.some(tag => selectedTags.has(tag)));
-
-    const nodeDateOnly = getIsoDateOnly(node.frontmatter.date);
-    const dateMatches = !selectedDate || (nodeDateOnly === selectedDate);
+    const displayType = node.frontmatter.type.charAt(0).toUpperCase()
+      + node.frontmatter.type.slice(1);
+    const typeMatches = selectedTypes.has(displayType);
+    const tagMatches = selectedTags.size === 0
+      || node.frontmatter.tags?.some(tag => selectedTags.has(tag));
+    const dateMatches = !selectedDate
+      || getIsoDateOnly(node.frontmatter.date) === selectedDate;
 
     return typeMatches && tagMatches && dateMatches;
   });
 
-  return (
-    <div className="max-w-3xl mx-auto">
-      <div className="mb-6 space-y-4">
-        <div className="flex gap-2 items-center">
-          <span className="text-sm font-medium text-gray-600 mr-2">Type:</span>
-          {['Quote', 'Link', 'Podcast'].map(type => (
-            <button
-              key={type}
-              onClick={() => toggleType(type)}
-              className={`px-3 py-1 text-sm rounded-full border transition-colors duration-150 ease-in-out
-                ${selectedTypes.has(type)
-                  ? 'bg-blue-500 text-white border-blue-500'
-                  : 'bg-white text-gray-600 border-gray-300 hover:border-blue-400 hover:text-blue-600'
-                }`}
-            >
-              {type}s
-            </button>
-          ))}
-        </div>
+  const renderContent = node => {
+    const cardProps = {
+      frontmatter: node.frontmatter,
+      html: node.html,
+      onDateClick: selectDate,
+    };
 
-        {allTags.length > 0 && (
-          <div className="flex gap-2 flex-wrap items-center">
-            <span className="text-sm font-medium text-gray-600 mr-2">Tags:</span>
-            {allTags.map(tag => (
+    return node.frontmatter.type === 'quote'
+      ? <QuoteCard {...cardProps} />
+      : <LinkCard {...cardProps} />;
+  };
+
+  const buttonClassName = active => [
+    'rounded-pill border px-3 py-1.5 text-sm font-medium transition-colors duration-150',
+    active
+      ? 'border-site-text bg-site-text text-site-bg'
+      : 'border-site-border bg-site-bg text-site-muted hover:text-site-text',
+  ].join(' ');
+
+  return (
+    <div className="space-y-6">
+      <div className="rounded-soft border border-site-border bg-site-surface px-4 py-4 md:px-5">
+        <div className="space-y-4">
+          <div className="flex flex-wrap gap-2 items-center">
+            <span className="mr-1 text-sm font-medium text-site-muted">Type</span>
+            {contentTypes.map(type => (
               <button
-                key={tag}
-                onClick={() => toggleTag(tag)}
-                className={`px-3 py-1 text-sm rounded-full border transition-colors duration-150 ease-in-out
-                  ${selectedTags.has(tag)
-                    ? 'bg-green-500 text-white border-green-500'
-                    : 'bg-white text-gray-600 border-gray-300 hover:border-green-400 hover:text-green-600'
-                  }`}
+                key={type}
+                type="button"
+                onClick={() => toggleType(type)}
+                aria-pressed={selectedTypes.has(type)}
+                className={buttonClassName(selectedTypes.has(type))}
               >
-                {tag}
+                {type}
               </button>
             ))}
           </div>
-        )}
 
-        {selectedDate && (
-          <div className="flex gap-2 items-center p-2 bg-yellow-100 border border-yellow-300 rounded">
-            <span className="text-sm font-medium text-yellow-800">
-              Filtering by date: {selectedDate}
-            </span>
-            <button
-              onClick={() => selectDate(null)}
-              className="ml-auto px-2 py-0.5 text-xs rounded border bg-white text-gray-600 border-gray-300 hover:bg-gray-100"
-            >
-              Clear Date
-            </button>
-          </div>
-        )}
+          {allTags.length > 0 && (
+            <div className="flex flex-wrap gap-2 items-center">
+              <span className="mr-1 text-sm font-medium text-site-muted">Theme</span>
+              {allTags.map(tag => (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => toggleTag(tag)}
+                  aria-pressed={selectedTags.has(tag)}
+                  className={buttonClassName(selectedTags.has(tag))}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {selectedDate && (
+            <div className="flex flex-wrap items-center gap-2 text-sm text-site-muted">
+              <span>Saved on {selectedDate}</span>
+              <button
+                type="button"
+                onClick={() => selectDate(null)}
+                className="font-semibold text-site-text underline underline-offset-4"
+              >
+                Clear date
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       {filteredNodes.length > 0 ? (
-        filteredNodes.map((node, index) => (
-          <div key={index}>
-            {renderContent(node)}
-          </div>
-        ))
+        <div>
+          {filteredNodes.map((node, index) => (
+            <div key={`${node.frontmatter.url || node.frontmatter.title}-${index}`}>
+              {renderContent(node)}
+            </div>
+          ))}
+        </div>
       ) : (
-        <p className="text-center text-gray-500 mt-8">No items match the current filters.</p>
+        <p className="text-site-muted">No items match the current filters.</p>
       )}
     </div>
   );

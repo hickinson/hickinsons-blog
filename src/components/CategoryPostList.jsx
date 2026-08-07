@@ -5,20 +5,28 @@ import publicationMetadataModule from '../data/publicationMetadata.cjs';
 
 const { getPublicationMetadata } = publicationMetadataModule;
 
-const CategoryPostList = ({
-    categoryKey,
-    posts,
-    categoryTitles,
-    categoryDescriptions,
-}) => {
-    const title = categoryTitles?.[categoryKey] || categoryKey;
-    const description = categoryDescriptions?.[categoryKey];
+const formatCategoryLabel = category => {
+    const labels = {
+        work: 'Work',
+        technology: 'Technology',
+        ideas: 'Ideas',
+        life: 'Life',
+    };
 
+    return labels[category] || category;
+};
+
+const CategoryPostList = ({
+    eyebrow = 'Journal',
+    title,
+    description,
+    posts,
+}) => {
     return (
         <section className="space-y-5">
             <div className="max-w-[44rem]">
                 <p className="mb-2 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-site-muted">
-                    {categoryKey === 'latest' ? 'Featured' : 'Category'}
+                    {eyebrow}
                 </p>
 
                 <h3 className="mb-3">
@@ -35,7 +43,12 @@ const CategoryPostList = ({
             <div className="overflow-hidden rounded-soft border border-site-border bg-white">
                 {posts.map((post, index) => {
                     const { slug } = post.fields;
-                    const { title, description, post_date } = post.frontmatter;
+                    const {
+                        title: postTitle,
+                        description: postDescription,
+                        post_date,
+                        post_category,
+                    } = post.frontmatter;
                     const publication = getPublicationMetadata({
                         slug,
                         frontmatter: post.frontmatter,
@@ -53,7 +66,7 @@ const CategoryPostList = ({
                         >
                             <div className="flex flex-col gap-2">
                                 <p className="mb-0 text-[0.8rem] font-medium uppercase tracking-[0.08em] text-site-muted">
-                                    {formatDisplayDate(post_date)}
+                                    {formatDisplayDate(post_date)} · {formatCategoryLabel(post_category)}
                                     {publication.retrospective && (
                                         <> · Retrospective</>
                                     )}
@@ -64,13 +77,13 @@ const CategoryPostList = ({
                                         to={slug}
                                         className="text-site-text no-underline hover:text-site-accent"
                                     >
-                                        {title}
+                                        {postTitle}
                                     </Link>
                                 </h4>
 
-                                {description && (
+                                {postDescription && (
                                     <p className="mb-0 max-w-reading text-site-muted">
-                                        {description}
+                                        {postDescription}
                                     </p>
                                 )}
                             </div>
