@@ -1,0 +1,99 @@
+name: Editorial idea
+description: Capture an observation, question, source or experience that may become a post.
+title: "[Idea] "
+body:
+  - type: textarea
+    id: capture
+    attributes:
+      label: What happened or what are you noticing?
+      description: Capture the concrete observation, event, question or idea before trying to turn it into an argument.
+      placeholder: A few sentences or bullets are enough.
+    validations:
+      required: true
+
+  - type: textarea
+    id: significance
+    attributes:
+      label: Why might it matter?
+      description: Record the connection or tension if one is already visible. Leave this blank rather than inventing a lesson.
+      placeholder: What is interesting, uncomfortable, surprising or unresolved?
+    validations:
+      required: false
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Source material
+      description: Links, books, quotes, photographs, conversations, notes or other evidence that belong with the capture.
+      placeholder: Add links or brief source notes. Do not paste large copyrighted extracts.
+    validations:
+      required: false
+
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Personal detail and provenance
+      description: Facts, experiences or reactions that are safe to use because they are genuinely yours and established here.
+      placeholder: What can a future drafter safely say happened, and what should it not assume?
+    validations:
+      required: false
+
+  - type: dropdown
+    id: form
+    attributes:
+      label: Possible form
+      description: Choose only if a form already feels natural. Form should be decided before drafting.
+      options:
+        - Undecided
+        - Pillar essay
+        - Reflective essay
+        - Field note
+        - Photo-led piece
+        - Reading note
+        - List or notebook
+        - Signal response
+        - Letter
+        - Dialogue
+        - Unfinished question
+        - Creative or poetic
+        - No full post yet
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Possible category
+      options:
+        - Undecided
+        - Work
+        - Technology
+        - Ideas
+        - Life
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Editorial status
+      description: This field is the v1 workflow state; labels may be added later but are not required.
+      options:
+        - Capture only
+        - Developing
+        - Ready for drafting
+        - Needs research
+        - Hold
+      default: 0
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: guardrail
+    attributes:
+      label: Drafting guardrail
+      options:
+        - label: A future drafter should use only what is supported here or in explicitly linked/retrieved sources, and should leave gaps unresolved rather than inventing detail.
+          required: true

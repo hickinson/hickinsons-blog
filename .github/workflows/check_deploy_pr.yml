@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Use repository Node version
         uses: actions/setup-node@v6
@@ -31,6 +33,12 @@ jobs:
         run: |
           node --version
           npm --version
+
+      - name: Check editorial metadata and changed-post warnings
+        shell: bash
+        run: |
+          changed_mdx="$(git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'src/mdx/*.mdx' | paste -sd, -)"
+          npm run editorial:check -- --soft="$changed_mdx"
 
       - name: Install locked dependencies
         run: npm ci
