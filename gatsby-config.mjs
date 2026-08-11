@@ -15,7 +15,7 @@ const config = {
   flags: {
     FAST_DEV: true,
     PARALLEL_SOURCING: true,
-    DEV_SSR: true
+    DEV_SSR: false
   },
   siteMetadata: {
     title: `hickinsons.blog`,
