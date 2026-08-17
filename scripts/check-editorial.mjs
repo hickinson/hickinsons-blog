@@ -2,6 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const MDX_DIR = path.resolve('src/mdx');
+const PUBLICATION_TIME_ZONE = 'Europe/London';
 const ALLOWED_CATEGORIES = new Set([
   'work',
   'technology',
@@ -65,6 +66,19 @@ const isIsoDate = value => {
   const date = new Date(`${value}T00:00:00Z`);
   return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
 };
+
+const publicationDateToday = () => {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: PUBLICATION_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${values.year}-${values.month}-${values.day}`;
+};
+
+const today = publicationDateToday();
 
 const countWords = text =>
   text
@@ -177,6 +191,10 @@ for (const filename of entries) {
       errors.push(`${relativePath}: missing post_date`);
     } else if (!isIsoDate(frontmatter.post_date)) {
       errors.push(`${relativePath}: post_date must use YYYY-MM-DD`);
+    } else if (frontmatter.post_date > today) {
+      warnings.push(
+        `${relativePath}: post_date ${frontmatter.post_date} is in the future; keep the publication PR unmerged until that date unless early publication is intentional.`
+      );
     }
 
     if (!frontmatter.description) {
