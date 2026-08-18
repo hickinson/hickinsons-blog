@@ -168,9 +168,7 @@ These are prompts to reconsider, not automatic failures.
 
 Primary categories should help readers understand what a piece is mainly about. They should operate at the same conceptual level.
 
-The current taxonomy mixes subjects (Data), practices (Leadership), lenses (Systems), modes of activity (Building) and a catch-all (Life). That makes the archive feel more uneven than the writing itself.
-
-The preferred future primary taxonomy is:
+The current primary taxonomy is:
 
 - **Work** — organisations, leadership, public service, data and digital work, organisational change;
 - **Technology** — AI, software, architecture, platforms and technical capability;
@@ -185,7 +183,7 @@ More specific concepts such as data, leadership, systems, building, AI, sport, f
 
 The homepage should not make category balance look like an editorial quota. A chronological journal view with optional category filtering is preferable to visually grouping the whole corpus by category by default.
 
-Existing post categories should not be changed casually. Any taxonomy migration should be handled as a separate reviewed content change.
+Existing post categories should not be changed casually. Any future taxonomy change should be handled as a separate reviewed content change.
 
 ## Commonplace relationship
 

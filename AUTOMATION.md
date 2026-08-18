@@ -120,6 +120,7 @@ The draft PR should include:
 - a short provenance note explaining what personal material was relied upon;
 - research/source notes where relevant;
 - editorial warnings that need human judgement;
+- when the source issue was last checked;
 - `npm run editorial:check` result;
 - `npm run build` result.
 
@@ -131,6 +132,10 @@ The automated path ends at a reviewable **draft pull request**.
 
 A human must read the piece, revise or reject it, review the diff and preview, decide whether it is ready, and explicitly approve merge/publication.
 
+Immediately before publication, re-read the source issue and its comments. If the issue has changed since the draft was prepared, review the new material before approving publication; do not assume the existing draft remains valid. Record when the source was last checked in the PR.
+
+A future `post_date` means the PR may be prepared and reviewed early but must remain unmerged until that date unless the human editor explicitly decides to publish early.
+
 No automation defined here may:
 
 - merge to `main`;
@@ -139,7 +144,13 @@ No automation defined here may:
 - rewrite a published post without a separate reviewed decision;
 - force a post to exist merely to satisfy cadence.
 
-## 9. Commonplace relationship
+## 9. After publication
+
+After successful publication, add a short publication outcome to the source issue identifying the published article and PR, then close the issue as completed.
+
+If genuinely distinct follow-up material remains, capture it in a new issue rather than leaving the published source issue at **Ready for drafting**.
+
+## 10. Commonplace relationship
 
 Commonplace is part of the same thinking system but is not a staging queue that every item must graduate from.
 
@@ -147,7 +158,7 @@ A saved source may remain a Commonplace entry permanently. An article may emerge
 
 The useful relationship is:
 
-`capture -> develop -> choose form -> draft -> check -> draft PR -> human review`
+`capture -> develop -> choose form -> draft -> check -> draft PR -> source re-check -> human release -> record publication -> close source issue`
 
 not:
 

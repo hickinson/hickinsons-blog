@@ -2,6 +2,12 @@ name: Editorial idea
 description: Capture an observation, question, source or experience that may become a post.
 title: "[Idea] "
 body:
+  - type: markdown
+    attributes:
+      value: |
+        ### This repository is public
+        Editorial Issues are publicly visible. Do not record confidential, sensitive or unnecessarily identifiable workplace, client or personal information here. Generalise people, organisations and private conversations where their identity is not necessary to the idea.
+
   - type: textarea
     id: capture
     attributes:
@@ -33,7 +39,7 @@ body:
     id: provenance
     attributes:
       label: Personal detail and provenance
-      description: Facts, experiences or reactions that are safe to use because they are genuinely yours and established here.
+      description: Facts, experiences or reactions that are genuinely yours and safe to record publicly.
       placeholder: What can a future drafter safely say happened, and what should it not assume?
     validations:
       required: false
