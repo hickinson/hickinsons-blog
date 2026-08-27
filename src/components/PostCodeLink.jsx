@@ -20,15 +20,7 @@ const formatCategory = category => {
     return labels[category] || category;
 };
 
-const estimateReadingTime = text => {
-    if (!text) return null;
-
-    const words = text.trim().split(/\s+/).length;
-    const minutes = Math.max(1, Math.round(words / 200));
-    return `${minutes} min read`;
-};
-
-const PostCodeLink = ({ frontmatter, children, slug }) => {
+const PostCodeLink = ({ frontmatter }) => {
     if (!frontmatter) return null;
 
     const {
@@ -42,15 +34,6 @@ const PostCodeLink = ({ frontmatter, children, slug }) => {
     const categoryLabel = formatCategory(post_category);
     const retrospective = Boolean(frontmatter.retrospective);
     const firstPublished = frontmatter.first_published || post_date || null;
-
-    const childText =
-        typeof children === 'string'
-            ? children
-            : Array.isArray(children)
-              ? children.join(' ')
-              : '';
-
-    const readingTime = estimateReadingTime(childText);
 
     return (
         <header className="mb-10 md:mb-12">
@@ -68,7 +51,6 @@ const PostCodeLink = ({ frontmatter, children, slug }) => {
 
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-site-muted">
                 {post_date && <span>{formatDisplayDate(post_date)}</span>}
-                {readingTime && <span>{readingTime}</span>}
                 {post_latest_update && <span>Updated {post_latest_update}</span>}
             </div>
 
