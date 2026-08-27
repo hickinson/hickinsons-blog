@@ -1,8 +1,5 @@
 import React from 'react';
 import formatDisplayDate from '../utils/formatDisplayDate';
-import publicationMetadataModule from '../data/publicationMetadata.cjs';
-
-const { getPublicationMetadata } = publicationMetadataModule;
 
 const formatCategory = category => {
     if (!category || category === 'non_blog_post') return null;
@@ -43,7 +40,8 @@ const PostCodeLink = ({ frontmatter, children, slug }) => {
     } = frontmatter;
 
     const categoryLabel = formatCategory(post_category);
-    const publication = getPublicationMetadata({ slug, frontmatter });
+    const retrospective = Boolean(frontmatter.retrospective);
+    const firstPublished = frontmatter.first_published || post_date || null;
 
     const childText =
         typeof children === 'string'
@@ -74,14 +72,14 @@ const PostCodeLink = ({ frontmatter, children, slug }) => {
                 {post_latest_update && <span>Updated {post_latest_update}</span>}
             </div>
 
-            {publication.retrospective && post_date && (
+            {retrospective && post_date && (
                 <p className="mt-4 mb-0 max-w-reading text-sm leading-6 text-site-muted">
                     Written retrospectively and placed in the sequence for{' '}
                     {formatDisplayDate(post_date)}.
-                    {publication.firstPublished && (
+                    {firstPublished && (
                         <>
                             {' '}First published{' '}
-                            {formatDisplayDate(publication.firstPublished)}.
+                            {formatDisplayDate(firstPublished)}.
                         </>
                     )}
                 </p>
