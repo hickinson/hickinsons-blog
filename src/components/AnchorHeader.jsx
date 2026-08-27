@@ -1,5 +1,21 @@
 import React from 'react';
 
+const extractText = node => {
+    if (node === null || node === undefined || typeof node === 'boolean') {
+        return '';
+    }
+    if (typeof node === 'string' || typeof node === 'number') {
+        return String(node);
+    }
+    if (Array.isArray(node)) {
+        return node.map(extractText).join('');
+    }
+    if (React.isValidElement(node)) {
+        return extractText(node.props?.children);
+    }
+    return '';
+};
+
 const generateId = str => {
     if (typeof str !== 'string') {
         console.error('generateId received non-string argument:', str);
@@ -9,7 +25,7 @@ const generateId = str => {
 };
 
 const AnchorHeader = ({ children, tag: Tag }) => {
-    const id = generateId(children);
+    const id = generateId(extractText(children));
     return (
         <div className="relative group">
             <Tag id={id}>
