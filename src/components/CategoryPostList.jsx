@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import formatDisplayDate from '../utils/formatDisplayDate';
-import publicationMetadataModule from '../data/publicationMetadata.cjs';
-
-const { getPublicationMetadata } = publicationMetadataModule;
 
 const formatCategoryLabel = category => {
     const labels = {
@@ -49,10 +46,7 @@ const CategoryPostList = ({
                         post_date,
                         post_category,
                     } = post.frontmatter;
-                    const publication = getPublicationMetadata({
-                        slug,
-                        frontmatter: post.frontmatter,
-                    });
+                    const retrospective = Boolean(post.frontmatter.retrospective);
 
                     return (
                         <article
@@ -67,7 +61,7 @@ const CategoryPostList = ({
                             <div className="flex flex-col gap-2">
                                 <p className="mb-0 text-[0.8rem] font-medium uppercase tracking-[0.08em] text-site-muted">
                                     {formatDisplayDate(post_date)} · {formatCategoryLabel(post_category)}
-                                    {publication.retrospective && (
+                                    {retrospective && (
                                         <> · Retrospective</>
                                     )}
                                 </p>
