@@ -8,6 +8,13 @@
 - Do not remove anything significant without explicit approval.
 - Keep public URLs, content, and site feel stable unless approved.
 
+## Editorial work
+- For editorial or content work, read [EDITORIAL.md](EDITORIAL.md), [VOICE.md](VOICE.md) and [AUTOMATION.md](AUTOMATION.md) before drafting.
+- Retrieve only the relevant files from `docs/editorial-learnings/`; do not load the whole learning store by default.
+- Treat Phil's explicit source material and current edits as stronger evidence than inferred style patterns.
+- After a verified human editorial pass, assess whether any learning is non-obvious, durable and material enough to capture. Most cycles should produce none.
+- Do not silently rewrite `VOICE.md`. Broad voice changes require normal human review.
+
 ## Change control
 - Work in review-first mode.
 - Group recommendations by risk: low, medium, high.

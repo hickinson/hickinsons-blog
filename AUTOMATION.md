@@ -4,7 +4,7 @@ This document defines the minimum assisted publishing workflow for hickinsons.bl
 
 The purpose is to reduce friction between captured thought and a reviewable draft. It is not a system for manufacturing weekly output, and it must not publish autonomously.
 
-Read [EDITORIAL.md](EDITORIAL.md) before drafting. Repository and release safety remain governed by [AGENTS.md](AGENTS.md) and [WORKFLOW.md](WORKFLOW.md).
+Read [EDITORIAL.md](EDITORIAL.md) and [VOICE.md](VOICE.md) before drafting. Retrieve only the relevant durable lessons from `docs/editorial-learnings/`; do not load the entire learning store by default. Repository and release safety remain governed by [AGENTS.md](AGENTS.md) and [WORKFLOW.md](WORKFLOW.md).
 
 ## 1. Editorial inbox
 
@@ -56,6 +56,7 @@ A drafter may use:
 - explicitly linked source material;
 - relevant Commonplace entries;
 - established project context that can be retrieved and verified;
+- `VOICE.md` and the small number of editorial learnings relevant to the material or chosen form;
 - web research when the idea requires current or external verification.
 
 A drafter must not invent:
@@ -68,6 +69,8 @@ A drafter must not invent:
 Keep quotation and paraphrase distinguishable from the author's interpretation. Follow the privacy, reputation and copyright gates in `EDITORIAL.md`.
 
 If important information is absent, omit it, mark it as uncertain or leave the idea undeveloped. Do not fill the gap with plausible prose.
+
+Prior editorial learnings do not override current provenance. A previous preference may guide treatment of supported material; it may not be used to infer how Phil must feel about a new subject.
 
 ## 5. Draft artefact
 
@@ -85,6 +88,14 @@ Use retrospective publication metadata only when genuinely required by the exist
 The filename should be stable, readable and snake_case. Do not rename existing routes casually.
 
 ## 6. Editorial checks
+
+Before technical validation, perform a judgement review against the source material, `EDITORIAL.md`, `VOICE.md` and the relevant retrieved learnings.
+
+Where the tooling allows it, the drafter should not be the only voice reviewer. Use a fresh-context or independent reviewer to identify likely AI residue, unsupported generalisation, vocabulary drift, repeated structural habits and places where the draft explains a human detail past the point where it has landed.
+
+The independent voice reviewer is report-first. It should identify evidence and proposed areas to reconsider rather than rewriting the article into its own preferred style. Meaning-changing edits remain human/editorial decisions.
+
+Provenance review remains separate from voice review. A sentence can sound exactly like Phil and still be unsupported; voice confidence never cures a provenance gap.
 
 Run:
 
@@ -119,6 +130,9 @@ The draft PR should include:
 - primary category;
 - a short provenance note explaining what personal material was relied upon;
 - research/source notes where relevant;
+- relevant editorial learnings consulted, if any;
+- voice/judgement review findings that still need human attention;
+- whether the current cycle appears to contain a candidate durable learning, with `none` as the normal answer;
 - editorial warnings that need human judgement;
 - when the source issue was last checked;
 - `npm run editorial:check` result;
@@ -134,6 +148,10 @@ A human must read the piece, revise or reject it, review the diff and preview, d
 
 Immediately before publication, re-read the source issue and its comments. If the issue has changed since the draft was prepared, review the new material before approving publication; do not assume the existing draft remains valid. Record when the source was last checked in the PR.
 
+After Phil's final substantive pass and before merge, compare the draft, the source material and the accepted edits. Assess whether the cycle taught the system anything non-obvious, durable and material that a future drafter would plausibly repeat or need to rediscover. Most cycles should produce no new learning.
+
+If a learning qualifies and can be stated without inventing rationale, add one focused entry under `docs/editorial-learnings/` to the same reviewable PR. Do not update `VOICE.md` automatically. Promotion into `VOICE.md` requires a separate deliberate judgement that the lesson is repeated or broadly applicable.
+
 A future `post_date` means the PR may be prepared and reviewed early but must remain unmerged until that date unless the human editor explicitly decides to publish early.
 
 No automation defined here may:
@@ -142,11 +160,14 @@ No automation defined here may:
 - enable auto-merge;
 - deploy directly to production;
 - rewrite a published post without a separate reviewed decision;
-- force a post to exist merely to satisfy cadence.
+- force a post to exist merely to satisfy cadence;
+- silently modify `VOICE.md` or turn every edit into a permanent learning.
 
 ## 9. After publication
 
 After successful publication, add a short publication outcome to the source issue identifying the published article and PR, then close the issue as completed.
+
+If a durable learning only becomes apparent after publication, capture it through a separate reviewed maintenance PR rather than editing production directly.
 
 If genuinely distinct follow-up material remains, capture it in a new issue rather than leaving the published source issue at **Ready for drafting**.
 
@@ -158,7 +179,7 @@ A saved source may remain a Commonplace entry permanently. An article may emerge
 
 The useful relationship is:
 
-`capture -> develop -> choose form -> draft -> check -> draft PR -> source re-check -> human release -> record publication -> close source issue`
+`capture -> develop -> choose form -> retrieve relevant voice learning -> draft -> independent judgement/provenance review -> check -> draft PR -> source re-check -> Phil pass -> learning checkpoint -> human release -> record publication -> close source issue`
 
 not:
 
