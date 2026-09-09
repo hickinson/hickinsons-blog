@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import fallbackHeadshot from '../images/headshot.jpg';
 
 const headshotContext = require.context(
     '../images/headshots',
@@ -7,15 +6,13 @@ const headshotContext = require.context(
     /\.(png|jpe?g|webp)$/i
 );
 
-const headshots = headshotContext
+const portraits = headshotContext
     .keys()
     .sort()
     .map((key) => {
         const asset = headshotContext(key);
         return asset?.default || asset;
     });
-
-const portraits = headshots.length > 0 ? headshots : [fallbackHeadshot];
 
 const HeadShot = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,6 +41,10 @@ const HeadShot = () => {
 
         return () => window.clearInterval(interval);
     }, [reduceMotion]);
+
+    if (portraits.length === 0) {
+        return null;
+    }
 
     return (
         <div className="mb-8">
