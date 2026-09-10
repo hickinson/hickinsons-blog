@@ -56,7 +56,7 @@ const QuoteCard = ({ frontmatter, html, onDateClick }) => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span>source</span>
+                                        <span>{attribution ? 'saved from' : 'source'}</span>
                                         <FaUpRightFromSquare className="ml-1 w-3 h-3" />
                                     </a>
                                 )}
