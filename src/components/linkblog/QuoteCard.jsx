@@ -32,6 +32,10 @@ const QuoteCard = ({ frontmatter, html, onDateClick }) => {
         setAdditionalContent(tempDiv.innerHTML.trim());
     }, [html]);
 
+    const attribution = frontmatter.attributionStatus
+        ? `${frontmatter.attributionStatus}${frontmatter.attributionTo ? ` to ${frontmatter.attributionTo}` : ''}`
+        : null;
+
     return (
         <div className="my-8">
             <div className="py-3 px-6 bg-gray-50 rounded">
@@ -40,8 +44,11 @@ const QuoteCard = ({ frontmatter, html, onDateClick }) => {
                     <blockquote className="not-italic pl-4">
                         <div className="text-gray-700 relative z-10">
                             <div className="space-y-4" dangerouslySetInnerHTML={{ __html: quoteContent }} />
-                            <div className="mt-3 font-semibold text-gray-700 flex items-center gap-3">
+                            <div className="mt-3 font-semibold text-gray-700 flex flex-wrap items-center gap-x-3 gap-y-1">
                                 <span>— {frontmatter.author}</span>
+                                {attribution && (
+                                    <span className="text-sm font-normal text-gray-500">{attribution}</span>
+                                )}
                                 {frontmatter.url && (
                                     <a
                                         href={frontmatter.url}
@@ -49,7 +56,7 @@ const QuoteCard = ({ frontmatter, html, onDateClick }) => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <span>source</span>
+                                        <span>{attribution ? 'saved from' : 'source'}</span>
                                         <FaUpRightFromSquare className="ml-1 w-3 h-3" />
                                     </a>
                                 )}
