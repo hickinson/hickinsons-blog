@@ -26,15 +26,21 @@ const LinkCard = ({ frontmatter, html, onDateClick }) => {
             <div className="py-3 px-6 bg-gray-50 rounded">
                 <div className="relative">
                     <div className="text-gray-700 relative z-10">
-                        <a
-                            href={frontmatter.url}
-                            className="text-blue-600 hover:text-blue-800 font-semibold text-lg inline-flex items-center"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {frontmatter.title}
-                            <FaUpRightFromSquare className="ml-2 w-3 h-3" />
-                        </a>
+                        {frontmatter.url ? (
+                            <a
+                                href={frontmatter.url}
+                                className="text-blue-600 hover:text-blue-800 font-semibold text-lg inline-flex items-center"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {frontmatter.title}
+                                <FaUpRightFromSquare className="ml-2 w-3 h-3" />
+                            </a>
+                        ) : (
+                            <div className="text-gray-800 font-semibold text-lg">
+                                {frontmatter.title}
+                            </div>
+                        )}
                         {frontmatter.description && (
                             <p className="mt-2 text-gray-600">{frontmatter.description}</p>
                         )}
