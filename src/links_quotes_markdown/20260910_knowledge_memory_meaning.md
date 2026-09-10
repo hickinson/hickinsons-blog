@@ -1,7 +1,6 @@
 ---
 type: "link"
 title: "Knowledge, memory and meaning"
-url: "https://github.com/stars/hickinson/lists/knowledge-memory-meaning"
 slug: "knowledge-memory-meaning"
 date: "2026-09-10"
 tags: ["knowledge", "memory", "AI"]
