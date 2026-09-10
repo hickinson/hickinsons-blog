@@ -4,6 +4,8 @@ This document defines the editorial baseline for hickinsons.blog.
 
 It is intended for both human writing and AI-assisted drafting. It should guide decisions without turning the site into a rigid house style. The aim is coherence of voice with variety of form.
 
+Read [VOICE.md](VOICE.md) alongside this guide for the narrower model of Phil's authorial judgement. `EDITORIAL.md` governs publication quality and hard gates; `VOICE.md` describes how the author tends to decide what sounds true, proportionate and worth saying.
+
 ## What this site is
 
 hickinsons.blog is an essay-led journal about thinking clearly, building useful things, understanding systems, and becoming more capable in a changing world.
@@ -35,6 +37,8 @@ Characteristic strengths to preserve:
 - willing to challenge a convenient framing without manufacturing outrage.
 
 The aim is not to imitate surface features from earlier posts. Short paragraphs, questions, headings and aphoristic lines are techniques, not the voice itself.
+
+For AI-assisted drafting, Phil's explicit source material and current edits outrank inferred style patterns. Relevant durable lessons may be retrieved from `docs/editorial-learnings/`, but the learning store is evidence about prior editorial judgement, not permission to invent a preference for the current piece.
 
 ## Choose the form before drafting
 
@@ -196,6 +200,14 @@ Commonplace is for things read, heard, saved and noticed while the thinking is s
 A public Commonplace item must include a reason for saving it. A source is not enough on its own.
 
 Do not publish a bookmark dump. Prefer a short source excerpt or link plus the author's own note about why it matters, what it connects to or what remains unresolved.
+
+## Editorial learning relationship
+
+The editorial system should learn from Phil's actual review decisions without turning every edit into a permanent rule.
+
+Use `docs/editorial-learnings/` for non-obvious, durable and material lessons from real editorial cycles. Most posts should produce no learning entry. Change-specific history remains in the source Issue or PR; broadly repeated authorial judgement may later be promoted into `VOICE.md` through a reviewed change.
+
+The learning store must not be used as a substitute for current provenance. A prior preference never licenses the system to invent a reaction or conclusion for a new piece.
 
 ## Automation principle
 
