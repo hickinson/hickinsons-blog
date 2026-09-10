@@ -1,0 +1,90 @@
+---
+title: "When the Publishing System Starts Becoming Me"
+post_date: "2026-09-18"
+post_category: "technology"
+description: "A reflection on what happens when an AI-assisted publishing system starts learning editorial judgement rather than merely imitating style."
+---
+
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
+
+When I started this blog, one of the things I found interesting about it was that I had used coding agents to make it.
+
+I found a blog I liked, used AI to help me reproduce the bones of it, then gradually changed it into something of my own. That was the experiment at the beginning: how far could I get with tools that made building software much cheaper and quicker than it had been before?
+
+It worked. The site exists. But a few months later, the website itself is no longer the bit I find most interesting.
+
+The system around it has become much more elaborate than the thing I first set out to build.
+
+There is now an `EDITORIAL.md`, an `AUTOMATION.md`, an `AGENTS.md`, a `WORKFLOW.md` and, as of this week, a `VOICE.md`. GitHub Issues hold half-formed ideas. Pull requests record what changed and why. There are checks for provenance, metadata and whether the site still builds. More recently, the system has started recording editorial lessons from the places where generated writing did not feel quite like me.
+
+That probably sounds faintly ridiculous for a personal blog. It may actually be faintly ridiculous for a personal blog.
+
+But it has also exposed something I did not really understand when I started.
+
+Early on, the problem seemed mostly to be one of prompting. Give an AI enough context about how I write, feed it examples and tell it what sort of tone I want, and presumably the output gets closer to me.
+
+There is some truth in that. The more useful discovery has been how often the difference sits somewhere else.
+
+A generated draft can be perfectly readable and still feel wrong. A small observation gets turned into a framework because the system thinks an essay ought to arrive somewhere. A trip becomes a theory. A human detail gets explained for another paragraph after it has already done the work. An ending becomes suspiciously neat.
+
+Sometimes it is even smaller than that. One draft used the word `ephemeral`. Perfectly good word. I just wouldn't use it.
+
+The interesting part is what happened to those corrections afterwards.
+
+At first, I would read the draft, change it and move on. Then the same kinds of things started appearing often enough that we began writing them down. Do not turn a small observation into a framework. Concrete detail can carry more than another theory paragraph. Author-supplied language outranks a smoother synonym.
+
+Those are now actual editorial learnings in the repository.
+
+So the system is no longer only being told to write in a style that looks a bit like mine. It is starting to accumulate evidence about the editorial decisions I make when something doesn't feel right.
+
+I think that distinction matters, although I am not sure yet where it leads.
+
+Style is relatively easy to caricature. You can count sentence lengths, spot recurring words, copy the rhythm of a few published posts and probably produce something that looks convincing at a glance. That does not mean the underlying judgement is mine.
+
+The harder bit is deciding that a claim has gone too far. Or that a paragraph is trying too hard to sound profound. Or that the odd little detail is more important than the explanation wrapped around it. Or that something should stay unresolved rather than being converted into a conclusion because conclusions look tidy.
+
+Those decisions are not especially dramatic. Most of them would never be visible to a reader because the rejected version disappears.
+
+Now they are starting to become part of the machinery.
+
+That creates another problem, of course. If a system learns from my previous edits, how does it avoid freezing an older version of me?
+
+A preference that was useful across five articles might be exactly the wrong instinct for the sixth. I may change my mind. I may deliberately want to write something differently. An unusual sentence might be unusual because it is bad, or because I am trying something new.
+
+We have dealt with that, at least in principle, by making the hierarchy explicit: what I actually say or change in the current piece outranks anything the system thinks it has learned about me previously.
+
+That feels important. Otherwise a personalised system could become a very efficient way of being trapped by your own history.
+
+I noticed another version of that problem yesterday when I read one of my older posts and thought it seemed much more "AI'd" than the recent ones.
+
+I could recognise some of the patterns now: the tidy progression, the rhetorical staging, the feeling that each paragraph knew exactly what job it had been given. I don't remember noticing them as strongly when the piece was published.
+
+That leaves me with an awkward editorial question. Should I go back and rewrite older posts when they start to feel like artefacts from an earlier version of the system? Or is some of that visible history part of what this blog has become?
+
+I suspect the answer will be case by case. I don't want to turn the archive into a permanent polishing exercise, and I certainly don't want to rewrite the past until it sounds as though I had today's thoughts and today's tools several months ago. But nor do I feel much loyalty to AI residue simply because it arrived first.
+
+The more interesting question is probably what all of this does to authorship.
+
+Automation is normally described as removing human effort from a process. In this case, more of the mechanics are automated than when I started, but the system also contains more explicit traces of my judgement. It knows more about the kinds of things I tend to reject. It is better at preserving source material. It has rules stopping it from inventing personal conclusions simply because they would make the piece work better.
+
+Does that make the writing more mine?
+
+I don't know yet.
+
+It might simply move my effort downstream. Instead of writing every sentence, I become the person who notices what the system misunderstood. There is still a reasonable question about whether that is authorship, editing or something new that sits between the two.
+
+And there is a more uncomfortable possibility: perhaps the system gets very good at passing its own test for what sounds like Phil while drifting away from what I would actually choose now.
+
+That is partly why I have started keeping the edits and the reasoning rather than just the final prose. If the system is going to learn from me, I want to be able to see what it thinks it has learned.
+
+This article is the first one being put through that loop deliberately. The first draft is being kept. The critique will be kept. Then I will be able to see what I still want to change.
+
+So I suppose we'll find out in the edit.
