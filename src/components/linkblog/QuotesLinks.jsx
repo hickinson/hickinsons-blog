@@ -66,6 +66,7 @@ const QuotesLinks = () => {
             title
             author
             url
+            slug
             date
             tags
           }
@@ -196,7 +197,10 @@ const QuotesLinks = () => {
       {filteredNodes.length > 0 ? (
         <div>
           {filteredNodes.map((node, index) => (
-            <div key={`${node.frontmatter.url || node.frontmatter.title}-${index}`}>
+            <div
+              key={`${node.frontmatter.url || node.frontmatter.title}-${index}`}
+              id={node.frontmatter.slug || undefined}
+            >
               {renderContent(node)}
             </div>
           ))}
