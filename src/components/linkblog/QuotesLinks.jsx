@@ -3,7 +3,65 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 import QuoteCard from './QuoteCard';
 import LinkCard from './LinkCard';
 
-const contentTypes = ['Quote', 'Link', 'Podcast'];
+const contentTypes = ['Quote', 'Link', 'Podcast', 'GitHub'];
+
+const themeDefinitions = [
+  {
+    name: 'AI',
+    tags: ['ai', 'agent', 'agents', 'agentic', 'agentic-ai', 'llm', 'llms', 'generative-ai', 'machine-learning', 'automation'],
+  },
+  {
+    name: 'Data',
+    tags: ['data', 'metadata', 'analytics', 'metrics', 'dashboard', 'dashboards', 'data-governance', 'data-modeling', 'data-modelling', 'data-models', 'data-products', 'semantic-model', 'power-bi', 'fabric'],
+  },
+  {
+    name: 'Systems',
+    tags: ['systems', 'systems-thinking', 'architecture', 'technology', 'digital', 'software', 'legacy', 'platform', 'platforms', 'platform-thinking', 'cloud', 'local-first', 'infrastructure', 'api', 'apis', 'interoperability', 'standards', 'open-standards', 'security', 'sovereignty', 'control'],
+  },
+  {
+    name: 'Organisations',
+    tags: ['organisation', 'organisations', 'organization', 'organizations', 'governance', 'leadership', 'strategy', 'capability', 'capabilities', 'incentives', 'transformation', 'procurement', 'service', 'services', 'service-design', 'work', 'management', 'business', 'value', 'operating-model', 'decision-making', 'economics', 'people'],
+  },
+  {
+    name: 'Public service',
+    tags: ['public-service', 'public-services', 'public-sector', 'local-government', 'local-gov', 'government', 'council', 'councils', 'lgr'],
+  },
+  {
+    name: 'Knowledge',
+    tags: ['knowledge', 'memory', 'meaning', 'language', 'definitions', 'thinking', 'learning', 'research', 'evidence', 'science', 'mental-models', 'writing', 'information', 'judgement', 'provenance', 'epistemology', 'explanation', 'explanations'],
+  },
+  {
+    name: 'Building',
+    tags: ['building', 'engineering', 'design', 'delivery', 'product', 'development', 'code', 'coding', 'open-source', 'experimentation', 'making'],
+  },
+  {
+    name: 'Culture',
+    tags: ['culture', 'music', 'politics', 'religion', 'society', 'relationships', 'identity', 'creativity', 'joy', 'community'],
+  },
+  {
+    name: 'Life',
+    tags: ['life', 'family', 'history', 'place', 'health', 'consciousness', 'ambition', 'career', 'parenting', 'ageing', 'personal-development', 'travel', 'sport', 'psychedelics', 'meditation'],
+  },
+];
+
+const normaliseTag = tag => tag
+  .trim()
+  .toLowerCase()
+  .replace(/[\s_]+/g, '-');
+
+const getThemes = tags => {
+  const normalisedTags = new Set((tags || []).map(normaliseTag));
+
+  return themeDefinitions
+    .filter(theme => theme.tags.some(tag => normalisedTags.has(tag)))
+    .map(theme => theme.name);
+};
+
+const getDisplayType = type => {
+  if (!type) return '';
+  if (type.toLowerCase() === 'github') return 'GitHub';
+  return type.charAt(0).toUpperCase() + type.slice(1);
+};
 
 const getIsoDateOnly = dateString => {
   if (!dateString) return null;
@@ -12,7 +70,7 @@ const getIsoDateOnly = dateString => {
 
 const QuotesLinks = () => {
   const [selectedTypes, setSelectedTypes] = useState(new Set(contentTypes));
-  const [selectedTags, setSelectedTags] = useState(new Set());
+  const [selectedThemes, setSelectedThemes] = useState(new Set());
   const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
@@ -20,21 +78,21 @@ const QuotesLinks = () => {
 
     const params = new URLSearchParams(window.location.search);
     const typesParam = params.get('types');
-    const tagsParam = params.get('tags');
+    const themesParam = params.get('themes') || params.get('tags');
     const dateParam = params.get('date');
 
     setSelectedTypes(
       typesParam ? new Set(typesParam.split(',')) : new Set(contentTypes)
     );
-    setSelectedTags(
-      tagsParam ? new Set(tagsParam.split(',')) : new Set()
+    setSelectedThemes(
+      themesParam ? new Set(themesParam.split(',')) : new Set()
     );
     setSelectedDate(
       dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam) ? dateParam : null
     );
   }, []);
 
-  const updateURL = (types, tags, date) => {
+  const updateURL = (types, themes, date) => {
     if (typeof window === 'undefined') return;
 
     const params = new URLSearchParams();
@@ -43,7 +101,7 @@ const QuotesLinks = () => {
       if (types.size > 0) params.set('types', Array.from(types).join(','));
     }
 
-    if (tags.size > 0) params.set('tags', Array.from(tags).join(','));
+    if (themes.size > 0) params.set('themes', Array.from(themes).join(','));
     if (date) params.set('date', date);
 
     const search = params.toString();
@@ -77,12 +135,15 @@ const QuotesLinks = () => {
     }
   `);
 
-  const allTags = useMemo(() => {
-    const tags = new Set();
+  const allThemes = useMemo(() => {
+    const themesInUse = new Set();
     data.allMarkdownRemark.nodes.forEach(node => {
-      node.frontmatter.tags?.forEach(tag => tags.add(tag));
+      getThemes(node.frontmatter.tags).forEach(theme => themesInUse.add(theme));
     });
-    return Array.from(tags).sort();
+
+    return themeDefinitions
+      .map(theme => theme.name)
+      .filter(theme => themesInUse.has(theme));
   }, [data]);
 
   const toggleType = type => {
@@ -91,16 +152,16 @@ const QuotesLinks = () => {
       if (next.has(type)) next.delete(type);
       else next.add(type);
       if (next.size === 0) next.add(type);
-      updateURL(next, selectedTags, selectedDate);
+      updateURL(next, selectedThemes, selectedDate);
       return next;
     });
   };
 
-  const toggleTag = tag => {
-    setSelectedTags(previous => {
+  const toggleTheme = theme => {
+    setSelectedThemes(previous => {
       const next = new Set(previous);
-      if (next.has(tag)) next.delete(tag);
-      else next.add(tag);
+      if (next.has(theme)) next.delete(theme);
+      else next.add(theme);
       updateURL(selectedTypes, next, selectedDate);
       return next;
     });
@@ -109,31 +170,34 @@ const QuotesLinks = () => {
   const selectDate = date => {
     const nextDate = date ? getIsoDateOnly(date) : null;
     setSelectedDate(nextDate);
-    updateURL(selectedTypes, selectedTags, nextDate);
+    updateURL(selectedTypes, selectedThemes, nextDate);
   };
 
   const filteredNodes = data.allMarkdownRemark.nodes.filter(node => {
     if (!node.frontmatter?.type) return false;
 
-    const displayType = node.frontmatter.type.charAt(0).toUpperCase()
-      + node.frontmatter.type.slice(1);
+    const displayType = getDisplayType(node.frontmatter.type);
+    const nodeThemes = getThemes(node.frontmatter.tags);
     const typeMatches = selectedTypes.has(displayType);
-    const tagMatches = selectedTags.size === 0
-      || node.frontmatter.tags?.some(tag => selectedTags.has(tag));
+    const themeMatches = selectedThemes.size === 0
+      || nodeThemes.some(theme => selectedThemes.has(theme));
     const dateMatches = !selectedDate
       || getIsoDateOnly(node.frontmatter.date) === selectedDate;
 
-    return typeMatches && tagMatches && dateMatches;
+    return typeMatches && themeMatches && dateMatches;
   });
 
   const renderContent = node => {
     const cardProps = {
-      frontmatter: node.frontmatter,
+      frontmatter: {
+        ...node.frontmatter,
+        tags: getThemes(node.frontmatter.tags),
+      },
       html: node.html,
       onDateClick: selectDate,
     };
 
-    return node.frontmatter.type === 'quote'
+    return node.frontmatter.type?.toLowerCase() === 'quote'
       ? <QuoteCard {...cardProps} />
       : <LinkCard {...cardProps} />;
   };
@@ -164,18 +228,18 @@ const QuotesLinks = () => {
             ))}
           </div>
 
-          {allTags.length > 0 && (
+          {allThemes.length > 0 && (
             <div className="flex flex-wrap gap-2 items-center">
               <span className="mr-1 text-sm font-medium text-site-muted">Theme</span>
-              {allTags.map(tag => (
+              {allThemes.map(theme => (
                 <button
-                  key={tag}
+                  key={theme}
                   type="button"
-                  onClick={() => toggleTag(tag)}
-                  aria-pressed={selectedTags.has(tag)}
-                  className={buttonClassName(selectedTags.has(tag))}
+                  onClick={() => toggleTheme(theme)}
+                  aria-pressed={selectedThemes.has(theme)}
+                  className={buttonClassName(selectedThemes.has(theme))}
                 >
-                  {tag}
+                  {theme}
                 </button>
               ))}
             </div>
