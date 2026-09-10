@@ -65,6 +65,8 @@ const QuotesLinks = () => {
             type
             title
             author
+            attributionStatus
+            attributionTo
             url
             slug
             date
