@@ -1,7 +1,6 @@
 ---
 type: "link"
 title: "Agents, engineering and judgement"
-url: "https://github.com/stars/hickinson/lists/agents-engineering-judgement"
 slug: "agents-engineering-judgement"
 date: "2026-09-10"
 tags: ["AI", "agents", "engineering", "judgement"]
