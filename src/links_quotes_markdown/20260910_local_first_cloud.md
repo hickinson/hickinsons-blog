@@ -1,7 +1,6 @@
 ---
 type: "link"
 title: "Local-first and cloud"
-url: "https://github.com/stars/hickinson/lists/local-first-cloud"
 slug: "local-first-cloud"
 date: "2026-09-10"
 tags: ["cloud", "local-first", "architecture"]
