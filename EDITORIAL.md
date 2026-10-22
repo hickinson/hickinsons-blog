@@ -168,6 +168,14 @@ These are prompts to reconsider, not automatic failures.
 - The ending creates artificial uncertainty.
 - The ending creates artificial certainty.
 
+## Article title capitalisation and punctuation
+
+Use **sentence case** for article titles and headings: capitalise the opening word, proper nouns and deliberately named concepts, but not each significant word simply because it appears in a title.
+
+Use punctuation where it belongs in ordinary writing: retain meaningful question marks, apostrophes, colons and internal sentence stops. Do not add a full stop to every title merely for consistency. After a sentence-ending full stop, question mark or exclamation mark, capitalise the first word of a new sentence. A colon does not automatically require capitalisation of the following word.
+
+Keep an author's deliberate title wording and named concepts intact. Do not mechanically lowercase acronyms, proper names or quoted names. For existing posts, change display-title metadata only unless a separate editorial decision explicitly approves a wording or URL change. Apply the same metadata convention consistently to lists, article pages and social previews rather than using CSS text-transform to force it.
+
 ## Categories
 
 Primary categories should help readers understand what a piece is mainly about. They should operate at the same conceptual level.
