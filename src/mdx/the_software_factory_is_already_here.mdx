@@ -1,0 +1,116 @@
+---
+title: "The software factory is already here. Sort of."
+post_date: "2026-10-23"
+post_category: "technology"
+description: "Building software with AI agents is becoming easier. What happens to engineering judgement, particularly for people who've never worked without them?"
+---
+
+export { MDXLayout as default } from '../components/MDXLayout';
+import { SEO } from "../components/SEO"
+
+export const Head = (props) => (
+  <SEO
+    frontmatter={props?.pageContext?.frontmatter || {}}
+    pathname={props?.location?.pathname || ''}
+  />
+);
+
+A few months ago, I started building this blog using AI coding agents. I'd found a website I liked, used it as a starting point and gradually changed it into something of my own. It was partly about wanting somewhere to write, but I was also interested in how much I could achieve using AI to do most of the coding.
+
+Since then I've been using the same approach across quite a few projects, from websites and business applications to fixing problems in existing systems. It's been a fascinating learning experience, particularly as the capabilities of the agents have improved. What might previously have taken days of development can sometimes be achieved in an afternoon, although that rather depends on what you're building and how well you've explained what you want.
+
+I've also found that the more you work with these tools, the more elaborate the process around them becomes. This blog, for example, now has its own editorial instructions, automated checks, GitHub issues, pull requests and a document describing how I write. There's probably more infrastructure supporting the publishing process than I ever imagined needing for a personal website, but much of it has developed because I've encountered a problem and wanted to avoid repeating it.
+
+It has made me think about the idea of a software factory, something I've been reading more about recently.
+
+## A factory of sorts
+
+The general idea is that AI agents can take on much of the software development process. Rather than someone writing all the code themselves, you describe what you need and agents help work through the requirements, design an approach, write the software, test it and potentially deploy it.
+
+There are some fairly ambitious interpretations of this, including completely automated development where agents work independently and people have very little involvement. I'm not convinced that's where we need to be heading, although I can see why people are interested in exploring what's possible.
+
+What interests me more is that a practical version already exists, and I've effectively been using one without initially thinking about it in those terms.
+
+I can take an idea, explore it with an agent, work out what needs building and have another agent implement it. Depending on the project, the process might involve a specification, changes to an existing repository, automated tests, a pull request and eventually deployment. I still need to understand what we're trying to achieve and make decisions along the way, but I no longer need to write every line of code to get there.
+
+For someone who has spent much of their career working with technology, that's quite an extraordinary shift. It also opens up opportunities to experiment with things that might previously have been too expensive or time-consuming to justify.
+
+## Getting it working is only part of the job
+
+I recently spent some time investigating a problem with an existing data portal. Users were having difficulty adding information to a large dataset, even though the same process worked when there were fewer records.
+
+We had access to the codebase and could reproduce the behaviour, so there was plenty for an AI agent to investigate. What followed was a process of working through possible explanations, testing what happened with different dataset sizes, checking the application logs and eventually identifying a PHP configuration limit that was preventing the larger form from being processed correctly.
+
+The fix itself was straightforward. We increased the configuration limit, incorporated it into the application and deployed the change through the existing process. Almost all the effort had gone into establishing why the problem occurred and being confident that we were fixing the right thing.
+
+An agent might have suggested the same configuration change much earlier, and it might have been correct. But I've seen enough plausible explanations turn out to be wrong to know that getting an answer quickly isn't necessarily the same as understanding the problem.
+
+There's quite a lot of engineering work that happens around writing code, and much of it becomes more important when the code itself can be produced so easily. Understanding how a system works, considering what else a change might affect, testing assumptions and making sure somebody can maintain it afterwards are all things that still need attention.
+
+But something else struck me during that investigation, which was how much I was learning from the process itself.
+
+## Getting back on the tools
+
+I've spent much of my career working with technology, including plenty of hands-on development, databases and application support. Over time my work has moved more towards managing teams, services and the wider direction of technology, which means I haven't been doing as much of the practical work myself.
+
+Working with coding agents has been an interesting way back into it.
+
+During the data portal investigation, for example, the agent could guide me through the process, explain what we were looking at, suggest commands and help interpret the results. I didn't need to know every detail of the application's framework or remember exactly how to carry out a particular task. I could ask questions as we went along, understand what was happening and gradually work towards a solution.
+
+I've found that incredibly useful, and it's something I probably underestimated when I first started experimenting with these tools. They don't just make it easier to produce software; they can make it much easier to learn how the software works.
+
+At the same time, I don't think my previous experience should be underestimated in how successfully I've been able to use them.
+
+Although I've been off the tools for some time, I still have a reasonable understanding of databases, applications, infrastructure, development and the problems that tend to arise when these things interact. I've spent years investigating faults, dealing with systems that don't behave as expected and working through the consequences of technical decisions.
+
+That experience gives me something to draw on when an agent proposes an approach or explains what it thinks has gone wrong. I might not immediately know the command to run or the correct syntax for a particular framework, but I can often recognise whether the explanation makes sense, what might be missing and where we need to look next.
+
+I also know how difficult some of this work used to be, which probably makes me appreciate what the tools are now capable of.
+
+It does raise a question about people coming into software development through AI, without having worked through those earlier stages.
+
+We're already seeing people build applications without necessarily learning to code in the traditional sense, and I don't think that's automatically a bad thing. There's no particular reason someone should have to spend years learning syntax before they're allowed to build something useful.
+
+But I do wonder what happens when things stop working as expected, particularly when the agent itself doesn't recognise the problem.
+
+Experienced developers have accumulated knowledge from solving problems, making mistakes and understanding why particular approaches work better than others. Much of that learning came from having to do the difficult bits themselves.
+
+If those difficult bits are increasingly handled by agents, where does that experience come from for somebody who has never had to do them?
+
+I'm not suggesting that people who start with AI can't become excellent developers. In fact, the learning opportunities are probably better than they've ever been. What interests me is whether we need to become more deliberate about developing judgement when the traditional route to acquiring it is changing.
+
+## Building things worth keeping
+
+There's another aspect of this that I recognise in myself. I tend to have quite a few ideas, and one of the frustrations has always been finding enough time to do anything meaningful with them.
+
+AI has changed that considerably. I can now explore an idea and have something working relatively quickly, which is brilliant when you're curious about lots of different things. I've found myself attempting projects that I probably wouldn't have considered a couple of years ago, partly because the cost of experimenting has fallen so dramatically.
+
+Of course, the fact that I can build something doesn't necessarily mean I should.
+
+Having spent years working with legacy systems, I'm familiar with the consequences of software outliving the circumstances in which it was originally built. Sometimes the people who understood it have moved on, the documentation is incomplete or the technology has changed around it. None of that becomes less important because an AI agent wrote the original code.
+
+If anything, I wonder whether we're going to become very good at creating the next generation of legacy systems much faster than we created the last.
+
+As I've gained experience with agents, I've become more structured in how I work. I use GitHub to manage code and record changes, separate new work into branches and review pull requests before incorporating changes into the main application. For more complicated projects, I try to establish the architecture and understand the requirements before starting development, and I've learned to record decisions so that agents can pick up work across different sessions.
+
+These are mostly established software engineering practices, although the way I'm using them has changed because agents can help with almost every stage. I've also become slightly sceptical when an agent confidently announces that everything has passed and the work is complete. It's usually encouraging, but I increasingly want to see the evidence and, where possible, test the result myself.
+
+I still occasionally get carried away with an idea and move too quickly, or discover that something I thought was finished needs more attention. I'm not looking to introduce an elaborate approval process around every change, but I do want to understand the consequences when something becomes a system that other people might depend on.
+
+This is where I think the software factory starts to become more interesting than simply generating code.
+
+## Where the judgement sits
+
+One of the things I particularly enjoy about working with agents is being able to test an idea without spending weeks discussing whether it's worth investigating. The ability to build a working example and learn from it has genuine value, and I wouldn't want to lose that by insisting every experiment goes through a traditional development process.
+
+But there's a difference between exploring an idea and making a commitment to something that other people will rely on. I think the level of scrutiny should reflect that difference, rather than treating every piece of software as either a disposable experiment or a major engineering project.
+
+The same probably applies to how we use our own expertise. There are tasks where I'm perfectly happy to let an agent get on with the work, and others where I want to understand exactly what's happening before agreeing to proceed. Knowing when to step in is becoming an important part of how I work, and I suspect that's true for others developing software this way.
+
+For now, my own software factory consists of a collection of agents, repositories, automated checks and a growing set of instructions intended to help everything work together. It's not completely automated, and I don't particularly want it to be.
+
+What I'm less certain about is how that human judgement develops for people whose first experience of building software is through AI. They have access to extraordinary tools and opportunities to learn, but they may not have encountered the same problems, mistakes and constraints that shaped how earlier generations of developers think.
+
+Perhaps they'll develop a different kind of expertise, and perhaps much of what I've learned over the years will become less important.
+
+I'm interested to see how that plays out, particularly when the software factory needs somebody to recognise that something isn't quite right.
