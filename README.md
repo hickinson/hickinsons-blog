@@ -17,9 +17,9 @@ New to the repository? Read these in order:
 - Windows, macOS or Linux
 - Git
 - Node version manager such as `fnm`
-- Node `20.5.0`, as declared in [.nvmrc](.nvmrc)
+- Node `22.23.4`, as declared in [.nvmrc](.nvmrc)
 
-The currently verified Windows setup uses Node `20.5.0` and npm `9.8.0`.
+The previous Windows setup was verified with Node `20.5.0` and npm `9.8.0`; recheck the local toolchain after switching to Node `22.23.4`.
 
 ## Local setup
 
@@ -35,7 +35,7 @@ fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
 Select the repository's Node version and verify it:
 
 ```powershell
-fnm use 20.5.0
+fnm use 22.23.4
 node --version
 npm --version
 ```
