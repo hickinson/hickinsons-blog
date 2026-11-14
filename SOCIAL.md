@@ -27,6 +27,25 @@ Retain the slots until Phil explicitly approves a schedule change. Weeks 1–2: 
 
 IDs are permanent: `SOC-X-001`, `SOC-LI-001`, etc. Never recycle an ID. Minor edits increment the copy version. A materially different angle gets a new ID. Article routes and dates remain unchanged. `post_date` is the journal date; `first_published` is recorded separately where present. Never present a retrospective entry as a contemporary social report.
 
+## Engagement and presentation
+
+Phil agreed this approach on 14 November 2026. Treat discovery, attention, response and continuing relationships as separate stages. Publishing is one part of participation; no post is required to generate comments. Some pieces establish a recognisable perspective or offer a moment worth reading quietly.
+
+For every candidate, record the intended reader, a conversation hypothesis and a presentation review. Explain who may recognise the experience, what they could contribute and why the chosen form suits the idea. These are editorial hypotheses, not forecasts. Do not invent an unresolved opinion, personal reaction or question to create an invitation.
+
+The presentation review checks whether the first line conveys the real incident or argument, whether paragraphs read naturally on a phone, and whether the post contains one appropriately sized idea. A photograph should contribute evidence, atmosphere or human detail; check reuse/privacy and add alt text. Use a diagram or document only where it clarifies something prose would make harder to understand. Avoid decorative stock images, automatic carousels, dramatic line breaks and compulsory closing questions. Exact mobile truncation varies: inspect the Buffer/native preview rather than promising that a fixed character count stays above the fold.
+
+Participation remains personal and unautomated. Follow conversations that genuinely interest Phil, contribute a relevant experience or distinction when available, and respond to substantive comments when practical. No daily comment quotas, reciprocal engagement arrangements, unsolicited promotion or supposed pre-publication algorithm warm-up. Keep publishing administration within the agreed budget; natural reading and conversation require separate, optional personal time. If that becomes burdensome, simplify rather than silently expanding the workload.
+
+| Observed pattern | What to investigate |
+| --- | --- |
+| Little relevant exposure | Topic clarity, audience fit, recent activity and relationships; do not infer weak writing from impressions alone |
+| Exposure with few public responses | Whether the thought invites experience or disagreement; quiet reading may still have value |
+| Substantive replies | What prompted them, who participated and whether a useful exchange followed |
+| Repeat interaction or introductions | Relationship development, recorded without exposing private conversations |
+
+Use per-platform evidence and comparable measurement ages. Do not infer causation from a handful of differently themed posts. Presentation choices should improve clarity and relevance before they serve a metric.
+
 ## Weekly editorial review: 20–30 minutes of Phil's time
 
 Friday: publish the blog through its existing human-controlled workflow. A new blog article does not automatically generate a social post.
