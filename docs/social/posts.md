@@ -1,6 +1,6 @@
 # Social post bank and publication register
 
-Prepared 14 November 2026 against repository main `e0e71dbfdca508ae7e84c9630c376277e9e0534d`. Copy is version 1 except SOC-LI-001 (version 2). Every post is **awaiting Phil's exact-copy approval**. Phil agreed the engagement approach on 14 November; this is separate from approval to schedule. Exact publication copy appears inside each text block; metadata is not part of the post. Dates are proposals using the unchanged Europe/London schedule. November and December slots below are GMT (UTC+00:00).
+Prepared 14 November 2026 against repository main `e0e71dbfdca508ae7e84c9630c376277e9e0534d`. Copy is version 1 except SOC-LI-001 (version 2). **SOC-X-001 v1 and SOC-LI-001 v2 are approved by Phil** (recorded 14 November 2026). All other posts await exact-copy approval. Phil also agreed the engagement approach on 14 November. Approved posts still require verified Buffer entry; this record does not claim they are scheduled. Exact publication copy appears inside each text block; metadata is not part of the post. Dates are proposals using the unchanged Europe/London schedule. November and December slots below are GMT (UTC+00:00).
 
 No post has been entered into Buffer, scheduled or published. No numeric performance baseline or previous-post history has been retrieved from authenticated platform accounts. Prior-publication/queue duplication is therefore a final pre-entry check, not a completed check.
 
@@ -28,7 +28,7 @@ Frequency stays at one per channel. Review on 29 November before considering any
 - Intended reader: Readers who enjoy books and ideas without needing to adopt an authors entire position.
 - Conversation hypothesis: Quiet recognition is plausible; readers may volunteer a book they still argue with. A complete thought need not be forced into a discussion.
 - Presentation review: Text-only; two natural paragraphs; no question or illustrative book-cover image needed.
-- Editorial status: review. Approval: pending, version 1. Operational status: not entered. Buffer ID: —. Published URL/time: —.
+- Editorial status: approved. Approval: Phil approved version 1 in the 14 November 2026 conversation, replying “Approved” to the explicit two-post approval request; recorded 2026-11-14 10:55 Europe/London. Operational status: not entered. Buffer ID: —. Published URL/time: —.
 
 ```text
 I'm increasingly comfortable finishing a book without deciding whether I agree with it.
@@ -50,7 +50,7 @@ Some books are useful because they change your mind. Others give you something t
 - Intended reader: Hands-on technical leaders and practitioners who recognise the urge to take over.
 - Conversation hypothesis: People may share how they judge when to help or stand back, including cases where restraint did not work. These are possible responses, not added claims or scripted replies.
 - Presentation review: Version 2 starts directly with the incident. Natural paragraphs, no internal-event photograph and no compulsory question; check the mobile preview.
-- Editorial status: review. Approval: pending, version 2. Operational status: not entered. Buffer ID: —. Published URL/time: —.
+- Editorial status: approved. Approval: Phil approved version 2 in the 14 November 2026 conversation, replying “Approved” to the explicit two-post approval request; recorded 2026-11-14 10:55 Europe/London. Operational status: not entered. Buffer ID: —. Published URL/time: —.
 
 ```text
 At an internal hackathon, I deliberately kept my laptop off the big screen.
