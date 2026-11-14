@@ -163,3 +163,34 @@ Record qualitative engagement beside each seven-day snapshot: relevant readers w
 Official sources checked for the engagement discussion: [LinkedIn relevance](https://www.linkedin.com/help/linkedin/answer/a1339724), [LinkedIn feed update](https://news.linkedin.com/2026/ImprovingTheFeed) and [X community management](https://business.x.com/en/basics/community-management). LinkedIn describes identity, content and activity signals and action against automated engagement. X identifies replies as an opportunity for conversation. Neither establishes a guaranteed formatting or participation formula. The X page also contains legacy feature references; this workflow does not rely on them.
 
 Prior PR revision 0652781 passed both GitHub build and Cloudflare Pages checks. Its preview was generated at https://72a8f88f.hickinsons-blog.pages.dev; visual inspection was not claimed. Validation of this documentation update is recorded in the PR. No schedule, account automation, reply or publication action is enabled.
+
+
+## Launch scheduling completed — 14 November 2026
+
+This update supersedes the earlier access blocker and pending entry status. Following Phil's explicit approval of SOC-X-001 v1 and SOC-LI-001 v2, secure Buffer sign-in succeeded. Before entry, the account showed a Free plan, two connected channels, zero scheduled posts and zero drafts in each channel. Channel views independently confirmed Europe/London and the existing Thursday 09:40 / Friday 15:02 slots. No recurring schedule setting was changed.
+
+Both exact approved copies were entered as text-only posts at those existing times. An editor-added trailing space was removed before saving. X showed 72 characters remaining (208 used); LinkedIn showed 2,273 remaining (727 used). The saved queue and post details confirmed:
+
+| Content | Buffer post ID | Scheduled time, Europe/London | Status |
+| --- | --- | --- | --- |
+| SOC-X-001 v1 | 6af83ee2e86145df3d38a087 | 19 November 2026 09:40 | Scheduled |
+| SOC-LI-001 v2 | 6af83f1ca3e278b9574577c8 | 20 November 2026 15:02 | Scheduled |
+
+The combined queue displayed exactly two scheduled posts. Its display timezone was UTC, which matches London on these November dates; each channel separately displayed London. No post was published immediately. Saved-post IDs were taken from the rendered post-details records. Queue review URL: https://publish.buffer.com/schedule?tab=queue . Repository PR remains a draft; scheduling approval does not authorise merge.
+
+### Historical observations, not a recent baseline
+
+Available Buffer history showed 0 sent X posts and 29 LinkedIn posts, with the latest visible LinkedIn record dated 30 May 2026. No launch-copy duplicate appeared in the latest visible entries. This history may not represent all native-platform activity. It must not be used to claim zero recent activity, a complete follower baseline or causal format effects.
+
+Visible historical examples were recorded at approximately 11:00 Europe/London on 14 November; Buffer marked their metrics refreshed two hours earlier. These are accumulated values of different ages, not seven-day pilot results:
+
+| LinkedIn date | Identifying topic | Reactions | Comments | Impressions | Reach |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 30 May 2026 | Need to get the team on these | 10 | 1 | 1,004 | 532 |
+| 29 April 2026 | Writing habits and real life | 16 | 3 | 620 | 318 |
+| 21 April 2026 | Agent access to open data | 0 | 0 | 226 | 106 |
+| 14 April 2026 | LGR discussion with colleagues | 12 | 2 | 939 | 596 |
+| 10 April 2026 | Crustafarianism article | 5 | 0 | 432 | 191 |
+| 31 March 2026 | Chartered Management milestone | 59 | 11 | 2,099 | 1,378 |
+
+These observations establish that some earlier posts did receive responses; they do not explain the differences or establish which presentation caused them. Current followers, recent profile activity and blog referrals remain uncollected. The first meaningful pilot review follows publication on 21–22 November; consistent seven-day comparisons follow later. No recurring task or engagement automation has been created.
